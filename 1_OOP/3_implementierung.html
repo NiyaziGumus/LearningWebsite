@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OOP – Implementierung</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  
+
+  <main class="container my-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
+        <li class="breadcrumb-item"><a href="index.html">OOP</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Implementierung</li>
+      </ol>
+    </nav>
+
+    <h1 class="section-title">Von UML zum Code</h1>
+    <section class="mb-4">
+      <h2 class="h5">Worum geht's?</h2>
+      <p>Nach dem Modellieren schreibst du passenden Code. UML hilft dir, Attribute und Methoden zu planen. Beim Implementieren achtest du auf Konstruktoren, Datentypen und klare Rückgabewerte.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>Jede Klasse aus dem UML-Diagramm wird als echte Klasse im Code angelegt.</li>
+        <li>Attribute aus dem Diagramm werden zu Feldern mit Typ, z. B. <code>String</code> oder <code>int</code>.</li>
+        <li>Konstruktoren setzen die Startwerte der Objekte.</li>
+        <li>Methoden aus dem Diagramm erhalten Signatur und Rückgabewert.</li>
+        <li>Vererbung wird mit <code>extends</code> (Java) oder <code>:</code> (C#) umgesetzt.</li>
+        <li>Interfaces werden mit <code>implements</code> bzw. <code>interface</code> programmiert.</li>
+        <li>Kleine Tests im <code>main</code> oder mit JUnit prüfen, ob alles funktioniert.</li>
+      </ul>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Beispiel</h2>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Java Beispiel für UML-Implementierung"><code>class Person { private String name; public Person(String n){this.name=n;} public String getName(){return name;} }
+class Student extends Person { public Student(String n){ super(n); } }</code></pre>
+      <p>Konstruktoren setzen den Namen beim Erstellen. <code>Student</code> nutzt <code>super(n)</code>, um den Elternkonstruktor auszuführen.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Weiter lernen</h2>
+      <ul>
+        <li><a href="1_uml_modellierung.html">Diagramm und Code vergleichen</a></li>
+        <li><a href="2_prinzipien_oop.html">Prinzipien beim Programmieren beachten</a></li>
+        <li><a href="4_entwurfsmuster.html">Factory-Pattern direkt ausprobieren</a></li>
+        <li><a href="../3_Webentwicklung/1_html.html">HTML-Formular für Eingaben planen</a></li>
+      </ul>
+    </section>
+  </main>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

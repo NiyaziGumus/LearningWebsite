@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OOP – UML-Modellierung</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  
+
+  <main class="container my-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
+        <li class="breadcrumb-item"><a href="index.html">OOP</a></li>
+        <li class="breadcrumb-item active" aria-current="page">UML-Modellierung</li>
+      </ol>
+    </nav>
+
+    <h1 class="section-title">UML-Klassendiagramme lesen</h1>
+    <section class="mb-4">
+      <h2 class="h5">Worum geht's?</h2>
+      <p>Klassendiagramme zeigen, wie Klassen zusammenarbeiten. Du erkennst Attribute, Methoden und Beziehungen auf einen Blick. So planst du dein Programm, bevor du Code schreibst.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>Rechtecke stehen für Klassen und enthalten oben den Namen.</li>
+        <li>Pfeile mit leerer Spitze bedeuten Vererbung (Generalisierung).</li>
+        <li>Eine einfache Linie ist eine Assoziation, oft mit Multiplizität 1..*, 0..1 usw.</li>
+        <li>Aggregation wird mit einer leeren Raute dargestellt, Komposition mit einer gefüllten.</li>
+        <li>Attribute haben Sichtbarkeiten wie <code>+</code> (public) oder <code>-</code> (private).</li>
+        <li>Methoden werden mit Parametern und Rückgabetyp wie <code>+zeige()</code> notiert.</li>
+        <li>Notizen oder Interfaces kannst du als gestrichelte Elemente hinzufügen.</li>
+      </ul>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Beispiel</h2>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Mermaid Klassendiagramm"><code>classDiagram
+  class Kurs {
+    -String titel
+    +String getTitel()
+  }
+  class Teilnehmer {
+    -String name
+    +String getName()
+  }
+  class OnlineKurs {
+    +String url
+  }
+  Kurs o-- Teilnehmer : nimmt teil
+  OnlineKurs --|&gt; Kurs
+</code></pre>
+      <p>Die Komposition <code>o--</code> zeigt, dass ein <code>Kurs</code> mehrere <code>Teilnehmer</code> enthält. <code>OnlineKurs</code> erbt Eigenschaften von <code>Kurs</code>.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Weiter lernen</h2>
+      <ul>
+        <li><a href="2_prinzipien_oop.html">OOP-Prinzipien im Detail ansehen</a></li>
+        <li><a href="3_implementierung.html">Modell in Java umsetzen</a></li>
+        <li><a href="4_entwurfsmuster.html">Observer-Muster im Diagramm verstehen</a></li>
+        <li><a href="../2_Datenbanken/1_modellierung_normalisierung.html">ER-Diagramm mit UML vergleichen</a></li>
+      </ul>
+    </section>
+  </main>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

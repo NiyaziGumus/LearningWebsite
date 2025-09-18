@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webentwicklung – CSS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  
+
+  <main class="container my-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Webentwicklung</a></li>
+        <li class="breadcrumb-item active" aria-current="page">CSS</li>
+      </ol>
+    </nav>
+
+    <h1 class="section-title">CSS gestalten</h1>
+    <section class="mb-4">
+      <h2 class="h5">Worum geht's?</h2>
+      <p>Mit CSS steuerst du Aussehen und Layout einer Webseite. Du kannst Farben, Schriftgrößen und Abstände definieren. Media Queries passen das Design an verschiedene Geräte an.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>CSS lässt sich inline, intern im <code>&lt;style&gt;</code> oder extern per Datei einbinden.</li>
+        <li>Selektoren wie <code>.klasse</code> oder <code>#id</code> wählen Elemente aus.</li>
+        <li>Box-Modell: <em>content</em>, <em>padding</em>, <em>border</em>, <em>margin</em>.</li>
+        <li>Flexbox und Grid erleichtern moderne Layouts.</li>
+        <li>Media Queries reagieren auf Breite, z. B. <code>@media (max-width: 600px)</code>.</li>
+        <li>Responsive Bilder nutzen <code>max-width: 100%</code> für Skalierung.</li>
+        <li>CSS-Dateien sollten organisiert und kommentiert sein.</li>
+      </ul>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Beispiel</h2>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="CSS Beispiel"><code>body { font-family: Arial; margin: 0; }
+.container { max-width: 900px; margin: 0 auto; }
+@media (max-width: 600px) {
+  .container { padding: 1rem; }
+}</code></pre>
+      <p>Das Layout zentriert den Inhalt auf großen Bildschirmen und sorgt auf kleinen Geräten für mehr Innenabstand.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Weiter lernen</h2>
+      <ul>
+        <li><a href="1_html.html">HTML-Struktur als Basis prüfen</a></li>
+        <li><a href="3_web_konzepte_sicherheit.html">Sichere Formulare mit CSS kombinieren</a></li>
+        <li><a href="../1_OOP/4_entwurfsmuster.html">Styles für Observer-Dashboards planen</a></li>
+        <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">Kanban-Boards gestalten</a></li>
+      </ul>
+    </section>
+  </main>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

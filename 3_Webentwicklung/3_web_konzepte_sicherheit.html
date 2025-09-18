@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webentwicklung – Konzepte &amp; Sicherheit</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  
+
+  <main class="container my-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Webentwicklung</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Konzepte &amp; Sicherheit</li>
+      </ol>
+    </nav>
+
+    <h1 class="section-title">REST &amp; Sicherheit</h1>
+    <section class="mb-4">
+      <h2 class="h5">Worum geht's?</h2>
+      <p>Web-Anwendungen tauschen Daten über HTTP aus. REST beschreibt einfache Regeln für Endpunkte. Sicherheit schützt vor Angriffen wie SQL-Injection und sorgt für verschlüsselten Verkehr.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Das Wichtigste in Kürze</h2>
+      <ul>
+        <li>REST nutzt eindeutige URLs und HTTP-Methoden wie GET, POST, PUT, DELETE.</li>
+        <li>GET liest Daten, POST legt an, PUT aktualisiert, DELETE entfernt.</li>
+        <li>JSON ist ein häufiges Austauschformat wegen der einfachen Struktur.</li>
+        <li>SQL-Injection entsteht, wenn Eingaben direkt in SQL landen.</li>
+        <li>Prepared Statements binden Parameter und verhindern Code-Einschleusung.</li>
+        <li>HTTPS verwendet TLS, damit Daten unterwegs verschlüsselt bleiben.</li>
+        <li>Cookies und Tokens sollten sicher (HttpOnly, Secure) gesetzt werden.</li>
+      </ul>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Beispiel</h2>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="REST Beispiel"><code>POST /api/kunden
+{
+  "name": "Sina",
+  "ort": "Leipzig"
+}</code></pre>
+      <p>Der Client sendet neue Kundendaten im JSON-Format. Der Server prüft die Eingaben und nutzt Prepared Statements, bevor sie in die Datenbank kommen.</p>
+    </section>
+
+    <section class="mb-4">
+      <h2 class="h5">Weiter lernen</h2>
+      <ul>
+        <li><a href="1_html.html">Formularstruktur sicher füllen</a></li>
+        <li><a href="2_css.html">Sichere Seiten trotzdem schön gestalten</a></li>
+        <li><a href="../2_Datenbanken/3_datenbankkonzepte.html">Transaktionen mit HTTPS kombinieren</a></li>
+        <li><a href="../4_Netzwerke/2_sicherheit_protokolle.html">Netzwerkprotokolle zum Schutz verstehen</a></li>
+      </ul>
+    </section>
+  </main>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

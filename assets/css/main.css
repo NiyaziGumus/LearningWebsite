@@ -1,0 +1,123 @@
+/* main.css - kleine Anpassungen für das Lern-Portal */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #f8f9fa;
+}
+
+main {
+  min-height: 60vh;
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.5rem 1.2rem rgba(0, 0, 0, 0.15);
+}
+
+/* Aktive Zustände besser sichtbar und lesbar machen */
+/* Aktive Zustände neutral (kein Blau) */
+.navbar .nav-link.active,
+.navbar .dropdown-item.active {
+  color: inherit; /* übernimmt Hell/Dunkel von Navbar */
+  font-weight: 600;
+}
+
+/* Auf dunkler Navbar (bg-dark / navbar-dark): Text weiß lassen, nur Unterstreichung als Akzent */
+.navbar.navbar-dark .nav-link.active,
+.navbar.navbar-dark .nav-link:focus,
+.navbar.navbar-dark .nav-link:hover {
+  color: #fff !important;
+}
+.navbar.navbar-dark .nav-link.active {
+  border-bottom: 2px solid currentColor; /* dezente Unterstreichung, keine Farbe wechseln */
+  border-radius: 0;
+}
+/* Sicherstellen, dass die Navbar-Variablen auf dunklem Header gut lesbar sind */
+.navbar.navbar-dark {
+  --bs-navbar-color: rgba(255, 255, 255, 0.85);
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-active-color: #ffffff;
+}
+
+.navbar .dropdown-item:focus,
+.navbar .dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* neutrales Grau statt Blau */
+}
+/* Verhindert Blau-auf-Blau: aktives Dropdown-Element hell markieren */
+.navbar .dropdown-menu .dropdown-item.active,
+.navbar .dropdown-menu .dropdown-item:active {
+  background-color: #e9ecef !important; /* neutrales Hellgrau */
+  color: #212529 !important; /* gut lesbar auf Hellgrau */
+}
+
+/* "Überblick" im Dropdown ausblenden, Hauptlink bleibt klickbar */
+.navbar .dropdown-menu .dropdown-item[href$="/index.html"],
+.navbar .dropdown-menu .dropdown-item[href="index.html"] {
+  display: none !important;
+}
+
+/* Fokus klar ohne Farbflut */
+.navbar .nav-link:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+@media (min-width: 992px) {
+  .navbar .dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+  .navbar .dropdown-toggle::after {
+    display: inline-block;
+  }
+}
+
+.breadcrumb {
+  background: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.quick-links a {
+  text-decoration: none;
+}
+
+.quick-links a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background: #212529;
+  color: #f8f9fa;
+  padding: 1.5rem 0;
+}
+
+footer a {
+  color: #f8f9fa;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Wenn eine Seite in einem iframe läuft, Navbar/Footer ausblenden */
+html.embedded nav.navbar,
+html.embedded footer {
+  display: none !important;
+}
+html.embedded body {
+  padding-top: 0 !important;
+}
