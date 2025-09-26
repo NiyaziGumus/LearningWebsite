@@ -21,43 +21,81 @@
     </nav>
 
     <h1 class="section-title">CSS gestalten</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Mit CSS steuerst du Aussehen und Layout einer Webseite. Du kannst Farben, Schriftgrößen und Abstände definieren. Media Queries passen das Design an verschiedene Geräte an.</p>
-    </section>
+    <div class="accordion" id="cssBasicsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="cssIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cssIntroCollapse" aria-expanded="true" aria-controls="cssIntroCollapse">
+            <i class="bi bi-paint-bucket me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="cssIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="cssIntro" data-bs-parent="#cssBasicsAccordion">
+          <div class="accordion-body">
+            <p>Mit CSS steuerst du Aussehen und Layout einer Webseite. Du kannst Farben, Schriftgrößen und Abstände definieren. Media Queries passen das Design an verschiedene Geräte an.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>CSS lässt sich inline, intern im <code>&lt;style&gt;</code> oder extern per Datei einbinden.</li>
-        <li>Selektoren wie <code>.klasse</code> oder <code>#id</code> wählen Elemente aus.</li>
-        <li>Box-Modell: <em>content</em>, <em>padding</em>, <em>border</em>, <em>margin</em>.</li>
-        <li>Flexbox und Grid erleichtern moderne Layouts.</li>
-        <li>Media Queries reagieren auf Breite, z. B. <code>@media (max-width: 600px)</code>.</li>
-        <li>Responsive Bilder nutzen <code>max-width: 100%</code> für Skalierung.</li>
-        <li>CSS-Dateien sollten organisiert und kommentiert sein.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="cssKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cssKeyFactsCollapse" aria-expanded="false" aria-controls="cssKeyFactsCollapse">
+            <i class="bi bi-lightbulb me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="cssKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="cssKeyFacts" data-bs-parent="#cssBasicsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>CSS lässt sich inline, intern im <code>&lt;style&gt;</code> oder extern per Datei einbinden.</li>
+              <li>Selektoren wie <code>.klasse</code> oder <code>#id</code> wählen Elemente aus.</li>
+              <li>Box-Modell: <em>content</em>, <em>padding</em>, <em>border</em>, <em>margin</em>.</li>
+              <li>Flexbox und Grid erleichtern moderne Layouts.</li>
+              <li>Media Queries reagieren auf Breite, z. B. <code>@media (max-width: 600px)</code>.</li>
+              <li>Responsive Bilder nutzen <code>max-width: 100%</code> für Skalierung.</li>
+              <li>CSS-Dateien sollten organisiert und kommentiert sein.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="CSS Beispiel"><code>body { font-family: Arial; margin: 0; }
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="cssExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cssExampleCollapse" aria-expanded="false" aria-controls="cssExampleCollapse">
+            <i class="bi bi-code-slash me-2" aria-hidden="true"></i>
+            Beispiel: Responsive Container
+          </button>
+        </h2>
+        <div id="cssExampleCollapse" class="accordion-collapse collapse" aria-labelledby="cssExample" data-bs-parent="#cssBasicsAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="CSS Beispiel"><code>body { font-family: Arial; margin: 0; }
 .container { max-width: 900px; margin: 0 auto; }
 @media (max-width: 600px) {
   .container { padding: 1rem; }
 }</code></pre>
-      <p>Das Layout zentriert den Inhalt auf großen Bildschirmen und sorgt auf kleinen Geräten für mehr Innenabstand.</p>
-    </section>
+            <p>Das Layout zentriert den Inhalt auf großen Bildschirmen und sorgt auf kleinen Geräten für mehr Innenabstand.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_html.html">HTML-Struktur als Basis prüfen</a></li>
-        <li><a href="3_web_konzepte_sicherheit.html">Sichere Formulare mit CSS kombinieren</a></li>
-        <li><a href="../1_OOP/4_entwurfsmuster.html">Styles für Observer-Dashboards planen</a></li>
-        <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">Kanban-Boards gestalten</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="cssNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cssNextStepsCollapse" aria-expanded="false" aria-controls="cssNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="cssNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="cssNextSteps" data-bs-parent="#cssBasicsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="1_html.html">HTML-Struktur als Basis prüfen</a></li>
+              <li><a href="3_web_konzepte_sicherheit.html">Sichere Formulare mit CSS kombinieren</a></li>
+              <li><a href="../1_OOP/4_entwurfsmuster.html">Styles für Observer-Dashboards planen</a></li>
+              <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">Kanban-Boards gestalten</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

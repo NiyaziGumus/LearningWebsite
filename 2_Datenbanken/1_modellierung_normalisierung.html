@@ -21,50 +21,88 @@
     </nav>
 
     <h1 class="section-title">Daten modellieren &amp; normalisieren</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Du modellierst zuerst, welche Informationen gespeichert werden und wie sie zusammenhängend sind. Danach überprüfst du die Tabellen mit den Normalformen, damit keine Redundanzen entstehen. So bleibt die Datenbank logisch und pflegeleicht.</p>
-    </section>
-
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>ER-Modelle zeigen Entitäten (Tabellen) und Beziehungen wie 1:1, 1:n oder n:m.</li>
-        <li>n:m-Beziehungen benötigen meist eine Zwischentabelle mit zwei Fremdschlüsseln.</li>
-        <li><strong>1. Normalform:</strong> Attributwerte sind atomar (keine Listen in einer Zelle).</li>
-        <li><strong>2. Normalform:</strong> Jedes Nicht-Schlüssel-Attribut hängt vollständig vom Primärschlüssel ab.</li>
-        <li><strong>3. Normalform:</strong> Keine transitive Abhängigkeit zwischen Nicht-Schlüssel-Attributen.</li>
-        <li>Normalisierung verringert Datenmüll, aber zu viele Tabellen können Abfragen erschweren.</li>
-        <li>Manchmal wird absichtlich denormalisiert, um Berichte zu beschleunigen.</li>
-      </ul>
-    </section>
-
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered">
-          <thead class="table-light">
-            <tr><th>Entität</th><th>Wichtige Attribute</th><th>Beziehung</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Kunde</td><td>KundenID (PK), Name, Ort</td><td>1:n zu Bestellung</td></tr>
-            <tr><td>Bestellung</td><td>BestellID (PK), Datum, KundenID (FK)</td><td>n:m zu Artikel über Position</td></tr>
-            <tr><td>Position</td><td>BestellID (FK), ArtikelID (FK), Menge</td><td>Verknüpft Bestellung und Artikel</td></tr>
-          </tbody>
-        </table>
+    <div class="accordion" id="dbModelAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbModelIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dbModelIntroCollapse" aria-expanded="true" aria-controls="dbModelIntroCollapse">
+            <i class="bi bi-diagram-3-fill me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="dbModelIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="dbModelIntro" data-bs-parent="#dbModelAccordion">
+          <div class="accordion-body">
+            <p>Du modellierst zuerst, welche Informationen gespeichert werden und wie sie zusammenhängend sind. Danach überprüfst du die Tabellen mit den Normalformen, damit keine Redundanzen entstehen. So bleibt die Datenbank logisch und pflegeleicht.</p>
+          </div>
+        </div>
       </div>
-      <p>Die Tabelle <strong>Position</strong> löst die n:m-Beziehung auf. Jede Zeile verweist auf genau einen Kunden über die Bestellung.</p>
-    </section>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="2_sql.html">Joins für Zwischentabellen anwenden</a></li>
-        <li><a href="3_datenbankkonzepte.html">ACID-Regeln für sichere Änderungen</a></li>
-        <li><a href="../1_OOP/1_uml_modellierung.html">Klassen- und ER-Diagramme vergleichen</a></li>
-        <li><a href="../5_BWL_Projektmanagement/3_angebotsvergleich_beschaffung.html">Nutzwertdaten später speichern</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbModelBasics">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbModelBasicsCollapse" aria-expanded="false" aria-controls="dbModelBasicsCollapse">
+            <i class="bi bi-lightbulb-fill me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="dbModelBasicsCollapse" class="accordion-collapse collapse" aria-labelledby="dbModelBasics" data-bs-parent="#dbModelAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>ER-Modelle zeigen Entitäten (Tabellen) und Beziehungen wie 1:1, 1:n oder n:m.</li>
+              <li>n:m-Beziehungen benötigen meist eine Zwischentabelle mit zwei Fremdschlüsseln.</li>
+              <li><strong>1. Normalform:</strong> Attributwerte sind atomar (keine Listen in einer Zelle).</li>
+              <li><strong>2. Normalform:</strong> Jedes Nicht-Schlüssel-Attribut hängt vollständig vom Primärschlüssel ab.</li>
+              <li><strong>3. Normalform:</strong> Keine transitive Abhängigkeit zwischen Nicht-Schlüssel-Attributen.</li>
+              <li>Normalisierung verringert Datenmüll, aber zu viele Tabellen können Abfragen erschweren.</li>
+              <li>Manchmal wird absichtlich denormalisiert, um Berichte zu beschleunigen.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbModelExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbModelExampleCollapse" aria-expanded="false" aria-controls="dbModelExampleCollapse">
+            <i class="bi bi-table me-2" aria-hidden="true"></i>
+            Beispiel: Tabellenstruktur
+          </button>
+        </h2>
+        <div id="dbModelExampleCollapse" class="accordion-collapse collapse" aria-labelledby="dbModelExample" data-bs-parent="#dbModelAccordion">
+          <div class="accordion-body">
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead class="table-light">
+                  <tr><th>Entität</th><th>Wichtige Attribute</th><th>Beziehung</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Kunde</td><td>KundenID (PK), Name, Ort</td><td>1:n zu Bestellung</td></tr>
+                  <tr><td>Bestellung</td><td>BestellID (PK), Datum, KundenID (FK)</td><td>n:m zu Artikel über Position</td></tr>
+                  <tr><td>Position</td><td>BestellID (FK), ArtikelID (FK), Menge</td><td>Verknüpft Bestellung und Artikel</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Die Tabelle <strong>Position</strong> löst die n:m-Beziehung auf. Jede Zeile verweist auf genau einen Kunden über die Bestellung.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbModelNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbModelNextStepsCollapse" aria-expanded="false" aria-controls="dbModelNextStepsCollapse">
+            <i class="bi bi-arrow-right-circle-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="dbModelNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="dbModelNextSteps" data-bs-parent="#dbModelAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="2_sql.html">Joins für Zwischentabellen anwenden</a></li>
+              <li><a href="3_datenbankkonzepte.html">ACID-Regeln für sichere Änderungen</a></li>
+              <li><a href="../1_OOP/1_uml_modellierung.html">Klassen- und ER-Diagramme vergleichen</a></li>
+              <li><a href="../5_BWL_Projektmanagement/3_angebotsvergleich_beschaffung.html">Nutzwertdaten später speichern</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

@@ -3,63 +3,220 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OOP – Implementierung</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>OOP – Implementierung: Vom UML zum Ruby-Code (Der komplette Guide)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .code-comment { color: #89b39a; }
+    .code-keyword { color: #c678dd; }
+    .code-class { color: #e5c07b; }
+    .code-method { color: #61afef; }
+    .ruby-explainer {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: .375rem;
+    }
+    .uml-plan {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: .375rem;
+      background-color: #fff;
+    }
+    .uml-plan img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
   
-
   <main class="container my-4">
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
         <li class="breadcrumb-item"><a href="index.html">OOP</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Implementierung</li>
+        <li class="breadcrumb-item active" aria-current="page">Implementierung (Der komplette Guide)</li>
       </ol>
     </nav>
 
-    <h1 class="section-title">Von UML zum Code</h1>
+    <h1 class="section-title">Vom Plan zum Programm: Ein UML-Diagramm in Ruby übersetzen</h1>
     <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Nach dem Modellieren schreibst du passenden Code. UML hilft dir, Attribute und Methoden zu planen. Beim Implementieren achtest du auf Konstruktoren, Datentypen und klare Rückgabewerte.</p>
+      <p>Willkommen zum ausführlichen Guide! Hier lernst du nicht nur, wie du ein UML-Diagramm in Ruby-Code umsetzt, sondern auch die Grundlagen der Ruby-Sprache selbst. Wir nehmen eine echte IHK-Aufgabe und zerlegen sie in kleine, verständliche Schritte. Jeder Code-Block wird Zeile für Zeile erklärt.</p>
     </section>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>Jede Klasse aus dem UML-Diagramm wird als echte Klasse im Code angelegt.</li>
-        <li>Attribute aus dem Diagramm werden zu Feldern mit Typ, z. B. <code>String</code> oder <code>int</code>.</li>
-        <li>Konstruktoren setzen die Startwerte der Objekte.</li>
-        <li>Methoden aus dem Diagramm erhalten Signatur und Rückgabewert.</li>
-        <li>Vererbung wird mit <code>extends</code> (Java) oder <code>:</code> (C#) umgesetzt.</li>
-        <li>Interfaces werden mit <code>implements</code> bzw. <code>interface</code> programmiert.</li>
-        <li>Kleine Tests im <code>main</code> oder mit JUnit prüfen, ob alles funktioniert.</li>
-      </ul>
-    </section>
+    <div class="accordion" id="rubyImplementationAccordion">
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="Java Beispiel für UML-Implementierung"><code>class Person { private String name; public Person(String n){this.name=n;} public String getName(){return name;} }
-class Student extends Person { public Student(String n){ super(n); } }</code></pre>
-      <p>Konstruktoren setzen den Namen beim Erstellen. <code>Student</code> nutzt <code>super(n)</code>, um den Elternkonstruktor auszuführen.</p>
-    </section>
+      <!-- Lektion 1: Eine einfache Klasse -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="bi bi-1-circle-fill me-2"></i> Lektion 1: Die Grundlagen – Eine einfache Klasse
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+          <div class="accordion-body">
+            <p>Wir starten mit dem Kernstück der OOP: einer einzelnen Klasse mit Attributen und einem Konstruktor.</p>
+            <div class="uml-plan my-3">
+              <h6>Der Plan: UML für eine `Person` (angelehnt an IHK W23/24)</h6>
+                            <p class="mt-2">Das Diagramm sagt uns: Die Klasse `Person` hat private Attribute und einen öffentlichen Konstruktor, der die Werte entgegennimmt.</p>
+            </div>
+            
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-keyword">class</span> <span class="code-class">Person</span>
+  <span class="code-method">attr_accessor</span> <span class="code-keyword">:name, :vorname, :fon, :mail</span>
 
-    <section class="mb-4">
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>(name, vorname, fon, mail)
+    <span class="code-keyword">@name</span> = name
+    <span class="code-keyword">@vorname</span> = vorname
+    <span class="code-keyword">@fon</span> = fon
+    <span class="code-keyword">@mail</span> = mail
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span></code></pre>
+            <div class="ruby-explainer">
+              <h6>Zeile-für-Zeile-Erklärung</h6>
+              <ul>
+                <li><code>class Person ... end</code>: Definiert den Bauplan für "Person"-Objekte.</li>
+                <li><code>attr_accessor :name, :vorname, ...</code>: Erstellt für jedes Symbol (<code>:name</code>) öffentliche Lese- und Schreibmethoden für die ansonsten privaten Instanzvariablen (<code>@name</code> etc.).</li>
+                <li><code>def initialize(...)</code>: Der Konstruktor. Wenn wir <code>Person.new(...)</code> aufrufen, wird diese Methode ausgeführt.</li>
+                <li><code>@name = name</code>: Der Wert des Parameters (rechts) wird in der Instanzvariable (links, mit @) des neuen Objekts gespeichert.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lektion 2: Vererbung -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="bi bi-2-circle-fill me-2"></i> Lektion 2: Aufbauen – Vererbung
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+          <div class="accordion-body">
+            <p>Eine `Lehrer`-Klasse soll von `Person` erben. Das spart uns Code, da ein Lehrer ja auch eine Person ist.</p>
+            <div class="uml-plan my-3">
+              <h6>Der Plan: UML für `Lehrer` erbt von `Person` (IHK W23/24)</h6>
+                            <p class="mt-2">Der Pfeil zeigt: `Lehrer` ist eine `Person` und hat zusätzlich eigene Attribute.</p>
+            </div>
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-comment"># Die Oberklasse Person bleibt wie in Lektion 1.</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Lehrer</span> < <span class="code-class">Person</span>
+  <span class="code-method">attr_accessor</span> <span class="code-keyword">:dienst_jahre, :lehr_befaehigung</span>
+
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>(name, vorname, fon, mail, dienst_jahre, lehr_befaehigung)
+    <span class="code-keyword">super</span>(name, vorname, fon, mail)
+    <span class="code-keyword">@dienst_jahre</span> = dienst_jahre
+    <span class="code-keyword">@lehr_befaehigung</span> = lehr_befaehigung
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span></code></pre>
+            <div class="ruby-explainer">
+              <h6>Zeile-für-Zeile-Erklärung</h6>
+              <ul>
+                <li><code>class Lehrer < Person</code>: Das <code>&lt;</code> ist Rubys Zeichen für Vererbung. `Lehrer` erbt nun alle Fähigkeiten von `Person`.</li>
+                <li><code>super(...)</code>: <strong>Extrem wichtig!</strong> <code>super</code> ruft die gleichnamige Methode der Oberklasse auf. Hier werden die `Person`-Attribute an den Konstruktor der `Person`-Klasse weitergereicht. So vermeiden wir doppelten Code.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lektion 3: Abstrakte Klassen & Methoden -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="bi bi-3-circle-fill me-2"></i> Lektion 3: Der IHK-Klassiker – Abstrakte Klassen
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+          <div class="accordion-body">
+            <p>Eine abstrakte Klasse ist eine unvollständige Schablone. Man kann kein Objekt von ihr erstellen. Sie zwingt ihre Unterklassen, bestimmte Methoden zu implementieren.</p>
+            <div class="uml-plan my-3">
+              <h6>Der Plan: UML für `Messwert` und `Strom` (IHK W24/25)</h6>
+                            <p class="mt-2">`Messwert` und `pruefeWert()` sind <i>kursiv</i>, also abstrakt. `Strom` ist eine konkrete Implementierung, die von `Messwert` erbt.</p>
+            </div>
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-keyword">class</span> <span class="code-class">Messwert</span>
+  <span class="code-method">attr_reader</span> <span class="code-keyword">:wert</span>
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>(wert)
+    @wert = wert
+  <span class="code-keyword">end</span>
+
+  <span class="code-keyword">def</span> <span class="code-method">pruefe_wert</span>
+    <span class="code-keyword">raise</span> NotImplementedError, "Unterklassen müssen diese Methode implementieren!"
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Strom</span> < <span class="code-class">Messwert</span>
+  <span class="code-keyword">def</span> <span class="code-method">pruefe_wert</span>
+    @wert >= 0.05 && @wert <= 2.0
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span></code></pre>
+            <div class="ruby-explainer">
+              <h6>Erklärung</h6>
+              <p>In Ruby gibt es kein <code>abstract</code>-Schlüsselwort. Stattdessen ist es üblich, in der Methode der Oberklasse einen Fehler (<code>raise NotImplementedError</code>) auszulösen. Das ist wie ein Vertrag: "Jede Klasse, die von mir erbt, muss eine eigene `pruefe_wert`-Methode bereitstellen, sonst stürzt das Programm ab."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lektion 4: Polymorphie -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="bi bi-4-circle-fill me-2"></i> Lektion 4: Die Superkraft – Polymorphie
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+          <div class="accordion-body">
+            <p>Polymorphie (Vielgestaltigkeit) bedeutet, dass man Objekte verschiedener Klassen gleich behandeln kann, sie aber unterschiedlich reagieren. Ein klassisches IHK-Beispiel (W23/24).</p>
+            <div class="uml-plan my-3">
+              <h6>Der Plan: UML für polymorphe `istGut()` Methode</h6>
+                            <p class="mt-2">`Kind` und `Erzieherin` erben beide von `Person`. Alle haben eine `istGut()`-Methode, aber die Logik dahinter ist unterschiedlich.</p>
+            </div>
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-keyword">class</span> <span class="code-class">Person</span>; <span class="code-keyword">def</span> <span class="code-method">ist_gut?</span>; <span class="code-keyword">end</span>; <span class="code-keyword">end</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Kind</span> < <span class="code-class">Person</span>
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>(note); @note = note; <span class="code-keyword">end</span>
+  <span class="code-keyword">def</span> <span class="code-method">ist_gut?</span>; @note < 2.5; <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Erzieherin</span> < <span class="code-class">Person</span>
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>(jahre); @jahre = jahre; <span class="code-keyword">end</span>
+  <span class="code-keyword">def</span> <span class="code-method">ist_gut?</span>; @jahre > 7; <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-comment"># Anwendung: Eine Liste mit gemischten Objekten!</span>
+personen_liste = [Kind.new(1.0), Erzieherin.new(5), Kind.new(3.5)]
+
+personen_liste.each <span class="code-keyword">do</span> |person|
+  ergebnis = person.ist_gut?
+  puts "Ein #{person.class} Objekt. Ist gut? #{ergebnis}"
+<span class="code-keyword">end</span></code></pre>
+            <div class="ruby-explainer">
+              <h6>Erklärung</h6>
+              <p>Das ist Polymorphie in Aktion. Wir haben eine Liste (`Array`) von `Person`-Objekten. In der Schleife ist es egal, ob <code>person</code> gerade ein `Kind` oder eine `Erzieherin` ist. Ruby weiß zur Laufzeit, welche konkrete `ist_gut?`-Methode es aufrufen muss. Das macht den Code extrem flexibel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-5">
       <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_uml_modellierung.html">Diagramm und Code vergleichen</a></li>
-        <li><a href="2_prinzipien_oop.html">Prinzipien beim Programmieren beachten</a></li>
-        <li><a href="4_entwurfsmuster.html">Factory-Pattern direkt ausprobieren</a></li>
-        <li><a href="../3_Webentwicklung/1_html.html">HTML-Formular für Eingaben planen</a></li>
-      </ul>
+      <div class="list-group">
+        <a href="4_entwurfsmuster.html" class="list-group-item list-group-item-action"><strong>Weiter zu den Entwurfsmustern</strong> <i class="bi bi-arrow-right-circle"></i><br>Lerne jetzt die Profi-Tricks wie Factory und Observer.</a>
+        <a href="2_prinzipien_oop.html" class="list-group-item list-group-item-action"><strong>Zurück zu den 4 Grundprinzipien</strong><br>Wiederhole, warum Kapselung und Vererbung so wichtig sind.</a>
+      </div>
     </section>
   </main>
 
-  
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

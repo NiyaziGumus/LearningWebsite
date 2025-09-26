@@ -21,43 +21,81 @@
     </nav>
 
     <h1 class="section-title">Kosten- &amp; Leistungsrechnung</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Die Kosten- und Leistungsrechnung zeigt, welche Aufwendungen für Produkte oder Dienstleistungen entstehen. So ermittelst du Preise, kontrollierst Budgets und planst Gewinne.</p>
-    </section>
+    <div class="accordion" id="bwlCostsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="bwlCostsIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bwlCostsIntroCollapse" aria-expanded="true" aria-controls="bwlCostsIntroCollapse">
+            <i class="bi bi-cash-coin me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="bwlCostsIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="bwlCostsIntro" data-bs-parent="#bwlCostsAccordion">
+          <div class="accordion-body">
+            <p>Die Kosten- und Leistungsrechnung zeigt, welche Aufwendungen für Produkte oder Dienstleistungen entstehen. So ermittelst du Preise, kontrollierst Budgets und planst Gewinne.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li><strong>Fixkosten:</strong> Fallen unabhängig von der Menge an, z. B. Miete.</li>
-        <li><strong>Variable Kosten:</strong> Ändern sich mit der produzierten Menge.</li>
-        <li><strong>Gesamtkosten:</strong> Fixkosten + variable Kosten.</li>
-        <li><strong>Deckungsbeitrag:</strong> Preis - variable Kosten.</li>
-        <li><strong>Break-even:</strong> Fixkosten / Deckungsbeitrag.</li>
-        <li>Leistungen sind bewertete Ausbringung, Kosten die bewertete Inanspruchnahme.</li>
-        <li>Kalkulation pro Stück hilft bei Preisentscheidungen.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="bwlCostsKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bwlCostsKeyFactsCollapse" aria-expanded="false" aria-controls="bwlCostsKeyFactsCollapse">
+            <i class="bi bi-lightbulb me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="bwlCostsKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="bwlCostsKeyFacts" data-bs-parent="#bwlCostsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><strong>Fixkosten:</strong> Fallen unabhängig von der Menge an, z. B. Miete.</li>
+              <li><strong>Variable Kosten:</strong> Ändern sich mit der produzierten Menge.</li>
+              <li><strong>Gesamtkosten:</strong> Fixkosten + variable Kosten.</li>
+              <li><strong>Deckungsbeitrag:</strong> Preis - variable Kosten.</li>
+              <li><strong>Break-even:</strong> Fixkosten / Deckungsbeitrag.</li>
+              <li>Leistungen sind bewertete Ausbringung, Kosten die bewertete Inanspruchnahme.</li>
+              <li>Kalkulation pro Stück hilft bei Preisentscheidungen.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="Break-Even Beispiel"><code>Fixkosten = 5.000 €
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="bwlCostsExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bwlCostsExampleCollapse" aria-expanded="false" aria-controls="bwlCostsExampleCollapse">
+            <i class="bi bi-graph-up-arrow me-2" aria-hidden="true"></i>
+            Beispielrechnung
+          </button>
+        </h2>
+        <div id="bwlCostsExampleCollapse" class="accordion-collapse collapse" aria-labelledby="bwlCostsExample" data-bs-parent="#bwlCostsAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="Break-Even Beispiel"><code>Fixkosten = 5.000 €
 Variable Kosten = 20 €
 Preis = 40 €
 Deckungsbeitrag = 20 €
 Break-even-Menge = 5.000 € / 20 € = 250 Stück</code></pre>
-      <p>Ab 250 Stück deckt das Produkt die Kosten. Darüber hinaus erwirtschaftest du Gewinn.</p>
-    </section>
+            <p>Ab 250 Stück deckt das Produkt die Kosten. Darüber hinaus erwirtschaftest du Gewinn.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="2_projektmanagement.html">Kosten im Projekt planen</a></li>
-        <li><a href="3_angebotsvergleich_beschaffung.html">Preise mit Nutzwertanalyse vergleichen</a></li>
-        <li><a href="../2_Datenbanken/2_sql.html">Berichte mit SQL erzeugen</a></li>
-        <li><a href="../4_Netzwerke/3_datenschutz_datensicherheit.html">Sicherheitskosten bewerten</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="bwlCostsNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bwlCostsNextStepsCollapse" aria-expanded="false" aria-controls="bwlCostsNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="bwlCostsNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="bwlCostsNextSteps" data-bs-parent="#bwlCostsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="2_projektmanagement.html">Kosten im Projekt planen</a></li>
+              <li><a href="3_angebotsvergleich_beschaffung.html">Preise mit Nutzwertanalyse vergleichen</a></li>
+              <li><a href="../2_Datenbanken/2_sql.html">Berichte mit SQL erzeugen</a></li>
+              <li><a href="../4_Netzwerke/3_datenschutz_datensicherheit.html">Sicherheitskosten bewerten</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

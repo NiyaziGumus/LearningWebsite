@@ -9,66 +9,6 @@
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Hauptnavigation">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Lern-Portal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menü ein-/ausblenden">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html" data-section="home">Start</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="1_OOP/index.html" id="navOOP" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-section="1_oop">OOP</a>
-            <ul class="dropdown-menu" aria-labelledby="navOOP">
-              <li><a class="dropdown-item" href="1_OOP/index.html" data-section="1_oop" data-page="1_oop/index.html">Überblick</a></li>
-              <li><a class="dropdown-item" href="1_OOP/1_uml_modellierung.html" data-section="1_oop" data-page="1_oop/1_uml_modellierung.html">UML-Modellierung</a></li>
-              <li><a class="dropdown-item" href="1_OOP/2_prinzipien_oop.html" data-section="1_oop" data-page="1_oop/2_prinzipien_oop.html">Prinzipien</a></li>
-              <li><a class="dropdown-item" href="1_OOP/3_implementierung.html" data-section="1_oop" data-page="1_oop/3_implementierung.html">Implementierung</a></li>
-              <li><a class="dropdown-item" href="1_OOP/4_entwurfsmuster.html" data-section="1_oop" data-page="1_oop/4_entwurfsmuster.html">Entwurfsmuster</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="2_Datenbanken/index.html" id="navDB" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-section="2_datenbanken">Datenbanken</a>
-            <ul class="dropdown-menu" aria-labelledby="navDB">
-              <li><a class="dropdown-item" href="2_Datenbanken/index.html" data-section="2_datenbanken" data-page="2_datenbanken/index.html">Überblick</a></li>
-              <li><a class="dropdown-item" href="2_Datenbanken/1_modellierung_normalisierung.html" data-section="2_datenbanken" data-page="2_datenbanken/1_modellierung_normalisierung.html">Modellierung &amp; Normalisierung</a></li>
-              <li><a class="dropdown-item" href="2_Datenbanken/2_sql.html" data-section="2_datenbanken" data-page="2_datenbanken/2_sql.html">SQL</a></li>
-              <li><a class="dropdown-item" href="2_Datenbanken/3_datenbankkonzepte.html" data-section="2_datenbanken" data-page="2_datenbanken/3_datenbankkonzepte.html">Datenbankkonzepte</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="3_Webentwicklung/index.html" id="navWeb" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-section="3_webentwicklung">Webentwicklung</a>
-            <ul class="dropdown-menu" aria-labelledby="navWeb">
-              <li><a class="dropdown-item" href="3_Webentwicklung/index.html" data-section="3_webentwicklung" data-page="3_webentwicklung/index.html">Überblick</a></li>
-              <li><a class="dropdown-item" href="3_Webentwicklung/1_html.html" data-section="3_webentwicklung" data-page="3_webentwicklung/1_html.html">HTML</a></li>
-              <li><a class="dropdown-item" href="3_Webentwicklung/2_css.html" data-section="3_webentwicklung" data-page="3_webentwicklung/2_css.html">CSS</a></li>
-              <li><a class="dropdown-item" href="3_Webentwicklung/3_web_konzepte_sicherheit.html" data-section="3_webentwicklung" data-page="3_webentwicklung/3_web_konzepte_sicherheit.html">Konzepte &amp; Sicherheit</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="4_Netzwerke/index.html" id="navNet" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-section="4_netzwerke">Netzwerke</a>
-            <ul class="dropdown-menu" aria-labelledby="navNet">
-              <li><a class="dropdown-item" href="4_Netzwerke/index.html" data-section="4_netzwerke" data-page="4_netzwerke/index.html">Überblick</a></li>
-              <li><a class="dropdown-item" href="4_Netzwerke/1_netzwerk_grundlagen.html" data-section="4_netzwerke" data-page="4_netzwerke/1_netzwerk_grundlagen.html">Netzwerk-Grundlagen</a></li>
-              <li><a class="dropdown-item" href="4_Netzwerke/2_sicherheit_protokolle.html" data-section="4_netzwerke" data-page="4_netzwerke/2_sicherheit_protokolle.html">Sicherheit &amp; Protokolle</a></li>
-              <li><a class="dropdown-item" href="4_Netzwerke/3_datenschutz_datensicherheit.html" data-section="4_netzwerke" data-page="4_netzwerke/3_datenschutz_datensicherheit.html">Datenschutz &amp; -sicherheit</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="5_BWL_Projektmanagement/index.html" id="navBWL" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-section="5_bwl_projektmanagement">BWL &amp; PM</a>
-            <ul class="dropdown-menu" aria-labelledby="navBWL">
-              <li><a class="dropdown-item" href="5_BWL_Projektmanagement/index.html" data-section="5_bwl_projektmanagement" data-page="5_bwl_projektmanagement/index.html">Überblick</a></li>
-              <li><a class="dropdown-item" href="5_BWL_Projektmanagement/1_kosten_leistungsrechnung.html" data-section="5_bwl_projektmanagement" data-page="5_bwl_projektmanagement/1_kosten_leistungsrechnung.html">Kosten &amp; Leistung</a></li>
-              <li><a class="dropdown-item" href="5_BWL_Projektmanagement/2_projektmanagement.html" data-section="5_bwl_projektmanagement" data-page="5_bwl_projektmanagement/2_projektmanagement.html">Projektmanagement</a></li>
-              <li><a class="dropdown-item" href="5_BWL_Projektmanagement/3_angebotsvergleich_beschaffung.html" data-section="5_bwl_projektmanagement" data-page="5_bwl_projektmanagement/3_angebotsvergleich_beschaffung.html">Angebotsvergleich</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <main class="container my-4">
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -198,17 +138,6 @@
       </div>
     </section>
   </main>
-
-  <footer aria-label="Footer">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-      <span>© Lern-Portal Prüfungsvorbereitung</span>
-      <div>
-        <a href="#">Impressum</a>
-        <span class="mx-2">|</span>
-        <a href="#">Kontakt</a>
-      </div>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="assets/js/main.js"></script>

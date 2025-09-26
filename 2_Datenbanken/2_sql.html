@@ -21,42 +21,80 @@
     </nav>
 
     <h1 class="section-title">SQL-Abfragen schreiben</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>SQL ist die Sprache für relationale Datenbanken. Mit wenigen Schlüsselwörtern liest du Daten, filterst sie und kannst Auswertungen berechnen. Viele Datenbankwerkzeuge unterstützen denselben Standard.</p>
-    </section>
+    <div class="accordion" id="dbSqlAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbSqlIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dbSqlIntroCollapse" aria-expanded="true" aria-controls="dbSqlIntroCollapse">
+            <i class="bi bi-terminal-fill me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="dbSqlIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="dbSqlIntro" data-bs-parent="#dbSqlAccordion">
+          <div class="accordion-body">
+            <p>SQL ist die Sprache für relationale Datenbanken. Mit wenigen Schlüsselwörtern liest du Daten, filterst sie und kannst Auswertungen berechnen. Viele Datenbankwerkzeuge unterstützen denselben Standard.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li><code>SELECT</code> wählt Spalten, <code>FROM</code> legt die Tabelle fest.</li>
-        <li><code>WHERE</code> filtert Zeilen nach Bedingungen wie <code>Preis &gt; 100</code>.</li>
-        <li><code>INNER JOIN</code> kombiniert nur passende Zeilen, <code>LEFT JOIN</code> behält alle von links.</li>
-        <li><code>GROUP BY</code> fasst Zeilen zusammen, z. B. pro Kunde.</li>
-        <li>Aggregatfunktionen wie <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MAX</code> berechnen Kennzahlen.</li>
-        <li><code>HAVING</code> filtert Gruppen, <code>ORDER BY</code> sortiert das Ergebnis.</li>
-        <li><code>LIMIT</code> schränkt die Anzahl der Zeilen ein.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbSqlKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbSqlKeyFactsCollapse" aria-expanded="false" aria-controls="dbSqlKeyFactsCollapse">
+            <i class="bi bi-lightning me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="dbSqlKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="dbSqlKeyFacts" data-bs-parent="#dbSqlAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><code>SELECT</code> wählt Spalten, <code>FROM</code> legt die Tabelle fest.</li>
+              <li><code>WHERE</code> filtert Zeilen nach Bedingungen wie <code>Preis &gt; 100</code>.</li>
+              <li><code>INNER JOIN</code> kombiniert nur passende Zeilen, <code>LEFT JOIN</code> behält alle von links.</li>
+              <li><code>GROUP BY</code> fasst Zeilen zusammen, z. B. pro Kunde.</li>
+              <li>Aggregatfunktionen wie <code>COUNT</code>, <code>SUM</code>, <code>AVG</code>, <code>MAX</code> berechnen Kennzahlen.</li>
+              <li><code>HAVING</code> filtert Gruppen, <code>ORDER BY</code> sortiert das Ergebnis.</li>
+              <li><code>LIMIT</code> schränkt die Anzahl der Zeilen ein.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="SQL JOIN Beispiel"><code>SELECT k.name, COUNT(b.id) AS anzahl
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbSqlExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbSqlExampleCollapse" aria-expanded="false" aria-controls="dbSqlExampleCollapse">
+            <i class="bi bi-code-block me-2" aria-hidden="true"></i>
+            Beispielabfrage
+          </button>
+        </h2>
+        <div id="dbSqlExampleCollapse" class="accordion-collapse collapse" aria-labelledby="dbSqlExample" data-bs-parent="#dbSqlAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="SQL JOIN Beispiel"><code>SELECT k.name, COUNT(b.id) AS anzahl
 FROM kunden k LEFT JOIN bestellungen b ON b.kunde_id = k.id
 GROUP BY k.name HAVING COUNT(b.id) &gt;= 0 ORDER BY anzahl DESC;
 </code></pre>
-      <p>Der LEFT JOIN zeigt auch Kunden ohne Bestellung. <code>HAVING</code> filtert nach Gruppen, <code>ORDER BY</code> sortiert aufsteigend.</p>
-    </section>
+            <p>Der LEFT JOIN zeigt auch Kunden ohne Bestellung. <code>HAVING</code> filtert nach Gruppen, <code>ORDER BY</code> sortiert aufsteigend.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_modellierung_normalisierung.html">Tabellenstruktur für Joins prüfen</a></li>
-        <li><a href="3_datenbankkonzepte.html">Transaktionen mit SQL-Befehlen kombinieren</a></li>
-        <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Prepared Statements gegen SQL-Injection</a></li>
-        <li><a href="../5_BWL_Projektmanagement/1_kosten_leistungsrechnung.html">SQL für Kostenberichte nutzen</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbSqlNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbSqlNextStepsCollapse" aria-expanded="false" aria-controls="dbSqlNextStepsCollapse">
+            <i class="bi bi-compass-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="dbSqlNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="dbSqlNextSteps" data-bs-parent="#dbSqlAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="1_modellierung_normalisierung.html">Tabellenstruktur für Joins prüfen</a></li>
+              <li><a href="3_datenbankkonzepte.html">Transaktionen mit SQL-Befehlen kombinieren</a></li>
+              <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Prepared Statements gegen SQL-Injection</a></li>
+              <li><a href="../5_BWL_Projektmanagement/1_kosten_leistungsrechnung.html">SQL für Kostenberichte nutzen</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

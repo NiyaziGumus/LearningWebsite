@@ -21,41 +21,79 @@
     </nav>
 
     <h1 class="section-title">DMZ, WLAN &amp; VPN</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Netzwerke brauchen Schutzschichten. Öffentliche Server liegen oft in einer DMZ, während interne Bereiche zusätzlich abgesichert sind. Moderne WLAN-Standards und VPNs sichern mobile Zugriffe.</p>
-    </section>
+    <div class="accordion" id="networkShieldAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkShieldIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#networkShieldIntroCollapse" aria-expanded="true" aria-controls="networkShieldIntroCollapse">
+            <i class="bi bi-shield-lock-fill me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="networkShieldIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="networkShieldIntro" data-bs-parent="#networkShieldAccordion">
+          <div class="accordion-body">
+            <p>Netzwerke brauchen Schutzschichten. Öffentliche Server liegen oft in einer DMZ, während interne Bereiche zusätzlich abgesichert sind. Moderne WLAN-Standards und VPNs sichern mobile Zugriffe.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li><strong>DMZ:</strong> Abgetrennter Bereich für öffentlich erreichbare Dienste, geschützt durch Firewalls.</li>
-        <li>WLAN sollte mindestens WPA2, besser WPA3 nutzen, plus starkes Passwort.</li>
-        <li>Versteckte SSID hilft wenig; wichtiger sind Verschlüsselung und regelmäßige Updates.</li>
-        <li>DHCP vergibt IP-Adressen in vier Schritten: Discover, Offer, Request, Acknowledge (DORA).</li>
-        <li>Reservierungen im DHCP sichern festen Geräten immer dieselbe Adresse.</li>
-        <li>VPN (Site-to-Site) verbindet zwei Standorte verschlüsselt über das Internet.</li>
-        <li>VPN-Tunnel nutzen Protokolle wie IPsec oder SSL/TLS.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkShieldKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkShieldKeyFactsCollapse" aria-expanded="false" aria-controls="networkShieldKeyFactsCollapse">
+            <i class="bi bi-lightbulb me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="networkShieldKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="networkShieldKeyFacts" data-bs-parent="#networkShieldAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><strong>DMZ:</strong> Abgetrennter Bereich für öffentlich erreichbare Dienste, geschützt durch Firewalls.</li>
+              <li>WLAN sollte mindestens WPA2, besser WPA3 nutzen, plus starkes Passwort.</li>
+              <li>Versteckte SSID hilft wenig; wichtiger sind Verschlüsselung und regelmäßige Updates.</li>
+              <li>DHCP vergibt IP-Adressen in vier Schritten: Discover, Offer, Request, Acknowledge (DORA).</li>
+              <li>Reservierungen im DHCP sichern festen Geräten immer dieselbe Adresse.</li>
+              <li>VPN (Site-to-Site) verbindet zwei Standorte verschlüsselt über das Internet.</li>
+              <li>VPN-Tunnel nutzen Protokolle wie IPsec oder SSL/TLS.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="DMZ Aufbau"><code>Internet --&gt; Firewall --&gt; DMZ (Webserver)
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkShieldExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkShieldExampleCollapse" aria-expanded="false" aria-controls="networkShieldExampleCollapse">
+            <i class="bi bi-diagram-2-fill me-2" aria-hidden="true"></i>
+            Beispiel: DMZ-Aufbau
+          </button>
+        </h2>
+        <div id="networkShieldExampleCollapse" class="accordion-collapse collapse" aria-labelledby="networkShieldExample" data-bs-parent="#networkShieldAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="DMZ Aufbau"><code>Internet --&gt; Firewall --&gt; DMZ (Webserver)
                    |
                    +--&gt; Firewall --&gt; Internes Netz</code></pre>
-      <p>Externe Anfragen erreichen zuerst die DMZ. Nur freigegebene Ports dürfen Richtung internes Netz weiterleiten.</p>
-    </section>
+            <p>Externe Anfragen erreichen zuerst die DMZ. Nur freigegebene Ports dürfen Richtung internes Netz weiterleiten.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_netzwerk_grundlagen.html">Adressbereiche für DMZ und LAN planen</a></li>
-        <li><a href="3_datenschutz_datensicherheit.html">Sicherheitsziele für VPN bewerten</a></li>
-        <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">HTTPS in der DMZ einsetzen</a></li>
-        <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">VPN-Projekte organisieren</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkShieldNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkShieldNextStepsCollapse" aria-expanded="false" aria-controls="networkShieldNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="networkShieldNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="networkShieldNextSteps" data-bs-parent="#networkShieldAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="1_netzwerk_grundlagen.html">Adressbereiche für DMZ und LAN planen</a></li>
+              <li><a href="3_datenschutz_datensicherheit.html">Sicherheitsziele für VPN bewerten</a></li>
+              <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">HTTPS in der DMZ einsetzen</a></li>
+              <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">VPN-Projekte organisieren</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

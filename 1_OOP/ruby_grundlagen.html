@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OOP - Ruby-Grundlagen</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  
+  <main class="container my-4">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
+        <li class="breadcrumb-item"><a href="index.html">OOP</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ruby-Grundlagen</li>
+      </ol>
+    </nav>
+
+    <h1 class="section-title">3. Ruby-Grundlagen für die IHK - Komplettes Tutorial</h1>
+    <section class="mb-4">
+      <h2 class="h5">Warum Ruby im OOP-Modul?</h2>
+      <p>Viele IHK-Aufgaben der letzten Jahre erlauben neben C# oder Java auch eine Umsetzung in Ruby. Die Sprache ist sehr kompakt und ideal, um die objektorientierten Konzepte schnell auszuprobieren. Mit den folgenden Beispielen lernst du die wichtigsten Sprachmittel kennen, um ein UML-Diagramm in Ruby-Code zu übertragen.</p>
+    </section>
+
+    <!-- Inhaltsverzeichnis -->
+    <section class="mb-5">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="h5 mb-0"><i class="bi bi-list"></i> Inhaltsverzeichnis</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><a href="#grundsyntax" class="text-decoration-none">1. Grundsyntax auf einen Blick</a></li>
+                <li><a href="#variablen-details" class="text-decoration-none">2. Variablen und Datentypen im Detail</a></li>
+                <li><a href="#methoden" class="text-decoration-none">3. Methoden und Funktionen</a></li>
+                <li><a href="#kontrollstrukturen" class="text-decoration-none">4. Kontrollstrukturen</a></li>
+                <li><a href="#arrays-hashes" class="text-decoration-none">5. Arrays und Hashes</a></li>
+                <li><a href="#strings" class="text-decoration-none">6. String-Manipulation</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li><a href="#bloecke" class="text-decoration-none">7. Blöcke und Iteratoren</a></li>
+                <li><a href="#oop" class="text-decoration-none">8. Objektorientierung</a></li>
+                <li><a href="#vererbung" class="text-decoration-none">9. Vererbung und Polymorphismus</a></li>
+                <li><a href="#module" class="text-decoration-none">10. Module und Mixins</a></li>
+                <li><a href="#fehlerbehandlung" class="text-decoration-none">11. Fehlerbehandlung</a></li>
+                <li><a href="#praxisbeispiele" class="text-decoration-none">12. Praxisbeispiele IHK</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1. Grundsyntax -->
+    <section class="mb-4" id="grundsyntax">
+      <h2 class="h5">1. Grundsyntax auf einen Blick</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-braces"></i> Variablen und Ausgaben</h3>
+            <p>Variablen legst du ohne Typangabe an. Die Methode <code>puts</code> schreibt eine Zeile auf die Konsole.</p>
+            <pre class="bg-dark text-white p-3 rounded" aria-label="Ruby Code Grundsyntax"><code>punktzahl = 38
+bonus = 7
+puts "Gesamt: #{punktzahl + bonus}"</code></pre>
+            <p>Interpolation mit <code>#{...}</code> ist in der Prüfung sehr praktisch, um Messergebnisse oder Kundeninformationen einzublenden.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-collection"></i> Wichtige Datentypen</h3>
+            <ul class="mb-2">
+              <li><code>Integer</code> und <code>Float</code> für Messwerte</li>
+              <li><code>String</code> für IDs, Namen und Status</li>
+              <li><code>Array</code> für Listen (z. B. Messreihen)</li>
+              <li><code>Hash</code> für Schlüssel-Wert-Paare (z. B. Einstellungen)</li>
+            </ul>
+            <pre class="bg-dark text-white p-3 rounded" aria-label="Ruby Datentyp Beispiel"><code>messwerte = [12.1, 11.9, 12.0]
+konfiguration = { intervall: 15, einheit: "Volt" }
+puts messwerte.first # 12.1</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Variablen und Datentypen im Detail -->
+    <section class="mb-4" id="variablen-details">
+      <h2 class="h5">2. Variablen und Datentypen im Detail</h2>
+      <div class="row g-3">
+        <div class="col-lg-4">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-hash"></i> Zahlen (Numbers)</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Integer (Ganzzahlen)
+alter = 25
+temperatur = -15
+grosse_zahl = 1_000_000
+
+# Float (Dezimalzahlen)
+spannung = 12.5
+strom = 0.75
+widerstand = spannung / strom
+
+# Automatische Typkonvertierung
+puts "Widerstand: #{widerstand.round(2)} Ohm"
+puts "Alter in 5 Jahren: #{alter + 5}"</code></pre>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-quote"></i> Strings (Zeichenketten)</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Verschiedene String-Definitionen
+name = "Max Mustermann"
+einstellung = 'AUTO'
+mehrzeilig = """
+  Sensor Status:
+  - Aktiv: #{name}
+  - Modus: #{einstellung}
+"""
+
+# String-Methoden
+puts name.length          # 14
+puts name.upcase          # MAX MUSTERMANN
+puts name.downcase        # max mustermann
+puts name.include?("Max") # true</code></pre>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-check2-square"></i> Boolean & nil</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Boolean-Werte
+sensor_aktiv = true
+fehler_erkannt = false
+sensor_verbunden = nil
+
+# Wahrheitswerte prüfen
+if sensor_aktiv
+  puts "Sensor läuft"
+end
+
+# nil und false sind "falsy"
+# alles andere ist "truthy"
+puts "Verbunden" if sensor_verbunden
+puts "Nicht verbunden" unless sensor_verbunden</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Methoden und Funktionen -->
+    <section class="mb-4" id="methoden">
+      <h2 class="h5">3. Methoden und Funktionen</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-gear"></i> Einfache Methoden</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Methode ohne Parameter
+def begruessung
+  puts "Willkommen im Messsystem!"
+end
+
+# Methode mit Parametern
+def berechne_leistung(spannung, strom)
+  leistung = spannung * strom
+  return leistung
+end
+
+# Methode mit Default-Werten
+def messreihe_info(anzahl, einheit = "V")
+  puts "#{anzahl} Messwerte in #{einheit}"
+end
+
+# Aufrufe
+begruessung()
+puts berechne_leistung(12, 0.5)  # 6.0
+messreihe_info(10)               # 10 Messwerte in V
+messreihe_info(5, "A")           # 5 Messwerte in A</code></pre>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-arrow-return-right"></i> Return-Werte</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Ruby gibt automatisch den letzten Wert zurück
+def quadrat(zahl)
+  zahl * zahl  # return ist optional
+end
+
+# Mehrere Return-Werte
+def min_max(array)
+  [array.min, array.max]
+end
+
+# Bedingte Returns
+def status_text(wert)
+  return "Niedrig" if wert < 10
+  return "Hoch" if wert > 20
+  "Normal"
+end
+
+# Beispiele
+puts quadrat(5)           # 25
+min, max = min_max([1,2,3,4,5])
+puts "Min: #{min}, Max: #{max}"  # Min: 1, Max: 5
+puts status_text(15)      # Normal</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-3">
+        <div class="alert alert-info" role="status">
+          <h4 class="h6"><i class="bi bi-info-circle"></i> Naming Conventions in Ruby</h4>
+          <ul class="mb-0">
+            <li><strong>Methoden:</strong> <code>snake_case</code> (z.B. <code>berechne_durchschnitt</code>)</li>
+            <li><strong>Klassen:</strong> <code>PascalCase</code> (z.B. <code>MesswertSensor</code>)</li>
+            <li><strong>Konstanten:</strong> <code>SCREAMING_SNAKE_CASE</code> (z.B. <code>MAX_TEMPERATUR</code>)</li>
+            <li><strong>Fragezeichen:</strong> Methoden die true/false zurückgeben enden mit <code>?</code> (z.B. <code>gueltig?</code>)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Kontrollstrukturen -->
+    <section class="mb-4" id="kontrollstrukturen">
+      <h2 class="h5">4. Kontrollstrukturen wie in den Prüfungsaufgaben</h2>
+      <p>Die IHK fragt häufig nach Plausibilitätsprüfungen. In Ruby arbeitest du dafür mit <code>if</code>, <code>elsif</code> und den Schleifen <code>each</code> oder <code>while</code>.</p>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-question-diamond"></i> If/Else Bedingungen</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Einfache if-Bedingung
+temperatur = 22.5
+if temperatur > 20
+  puts "Warm"
+elsif temperatur > 10
+  puts "Mild"
+else
+  puts "Kalt"
+end
+
+# Inline if (Modifier)
+puts "Heizung an" if temperatur < 18
+
+# Unless (Negation von if)
+puts "Kühlung aus" unless temperatur > 25
+
+# Case/When für mehrere Optionen
+status = "AKTIV"
+case status
+when "AKTIV"
+  puts "System läuft"
+when "FEHLER"
+  puts "System gestoppt"
+when "WARTUNG"
+  puts "System pausiert"
+else
+  puts "Unbekannter Status"
+end</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-arrow-repeat"></i> Schleifen</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># While-Schleife
+counter = 0
+while counter < 5
+  puts "Messung #{counter + 1}"
+  counter += 1
+end
+
+# For-Schleife mit Range
+for i in 1..3
+  puts "Durchgang #{i}"
+end
+
+# Until-Schleife (Gegenteil von while)
+wert = 0
+until wert >= 10
+  wert += 2
+  puts "Wert: #{wert}"
+end
+
+# Times-Schleife (Ruby-spezifisch)
+5.times do |i|
+  puts "Iteration #{i}"
+end</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div class="p-3 bg-white shadow-sm rounded">
+          <h3 class="h6">Messwert-Validierung (IHK-typisch)</h3>
+          <pre class="bg-dark text-white p-3 rounded" aria-label="Messwert Validierung in Ruby"><code>def gueltiger_wert?(wert)
+  if wert >= 11.5 && wert <= 12.5
+    true
+  else
+    false
+  end
+end
+
+# Vereinfachte Version
+def gueltiger_wert_kurz?(wert)
+  wert >= 11.5 && wert <= 12.5
+end
+
+werte = [12.1, 15.0, 12.0, 10.5, 12.3]
+gueltige = werte.select { |wert| gueltiger_wert?(wert) }
+puts gueltige.inspect # => [12.1, 12.0, 12.3]
+
+# Fehler zählen
+anzahl_fehler = 0
+werte.each do |wert|
+  unless gueltiger_wert?(wert)
+    anzahl_fehler += 1
+    puts "Ungültiger Wert: #{wert}"
+  end
+end
+puts "Fehlerhafte Messwerte: #{anzahl_fehler}"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Arrays und Hashes -->
+    <section class="mb-4" id="arrays-hashes">
+      <h2 class="h5">5. Arrays und Hashes im Detail</h2>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-list-ul"></i> Arrays (Listen)</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Array erstellen
+messwerte = [12.1, 11.9, 12.0, 12.3]
+sensoren = ["Temperatur", "Druck", "Feuchtigkeit"]
+gemischt = [1, "Text", 3.14, true]
+
+# Zugriff auf Elemente
+puts messwerte[0]      # 12.1 (erstes Element)
+puts messwerte[-1]     # 12.3 (letztes Element)
+puts messwerte[1, 2]   # [11.9, 12.0] (2 Elemente ab Index 1)
+
+# Array-Methoden
+puts messwerte.length  # 4
+puts messwerte.size    # 4 (Alias für length)
+puts messwerte.empty?  # false
+puts messwerte.first   # 12.1
+puts messwerte.last    # 12.3
+
+# Elemente hinzufügen/entfernen
+messwerte << 12.5          # Element anhängen
+messwerte.push(12.7)       # Element anhängen
+messwerte.unshift(11.8)    # Element am Anfang hinzufügen
+puts messwerte.pop         # Letztes Element entfernen und zurückgeben</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-grid-3x2"></i> Hashes (Schlüssel-Wert-Paare)</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Hash erstellen
+sensor_config = {
+  "temperatur_min" => 10.0,
+  "temperatur_max" => 30.0,
+  "einheit" => "Celsius"
+}
+
+# Mit Symbolen (empfohlen)
+config = {
+  temperatur_min: 10.0,
+  temperatur_max: 30.0,
+  einheit: "Celsius",
+  aktiv: true
+}
+
+# Zugriff auf Werte
+puts config[:einheit]        # "Celsius"
+puts config["einheit"]       # nil (String-Key existiert nicht)
+
+# Werte setzen/ändern
+config[:messintervall] = 5
+config[:aktiv] = false
+
+# Hash-Methoden
+puts config.keys           # [:temperatur_min, :temperatur_max, ...]
+puts config.values         # [10.0, 30.0, "Celsius", ...]
+puts config.length         # 4
+puts config.has_key?(:einheit)  # true</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div class="alert alert-success" role="status">
+          <h4 class="h6"><i class="bi bi-lightbulb"></i> Array- und Hash-Operationen für IHK</h4>
+          <pre class="bg-dark text-white p-3 rounded"><code># Typische IHK-Aufgaben
+messwerte = [12.1, 11.5, 12.8, 10.2, 12.0, 15.1, 11.9]
+
+# Durchschnitt berechnen
+durchschnitt = messwerte.sum / messwerte.length.to_f
+puts "Durchschnitt: #{durchschnitt.round(2)}"
+
+# Min/Max finden
+puts "Minimum: #{messwerte.min}"
+puts "Maximum: #{messwerte.max}"
+
+# Filtern nach Bedingungen
+gueltige_werte = messwerte.select { |wert| wert >= 11.0 && wert <= 13.0 }
+puts "Gültige Werte: #{gueltige_werte.length}"
+
+# Sortieren
+sortiert = messwerte.sort
+puts "Sortiert: #{sortiert}"
+
+# Hash für Sensor-Daten
+sensor_daten = {
+  "Sensor_01" => { temperatur: 22.5, status: "OK" },
+  "Sensor_02" => { temperatur: 45.2, status: "WARNUNG" },
+  "Sensor_03" => { temperatur: 18.1, status: "OK" }
+}
+
+# Sensoren mit Warnung finden
+warnungen = sensor_daten.select { |id, daten| daten[:status] == "WARNUNG" }
+puts "Sensoren mit Warnung: #{warnungen.keys}"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. String-Manipulation -->
+    <section class="mb-4" id="strings">
+      <h2 class="h5">6. String-Manipulation</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-scissors"></i> String-Methoden</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># String-Erstellung und -Manipulation
+sensor_id = "  TEMP_SENSOR_01  "
+
+# Bereinigung
+puts sensor_id.strip           # "TEMP_SENSOR_01"
+puts sensor_id.upcase          # "  TEMP_SENSOR_01  "
+puts sensor_id.downcase        # "  temp_sensor_01  "
+
+# String-Tests
+puts sensor_id.include?("TEMP")    # true
+puts sensor_id.start_with?("TEMP") # false (wegen Leerzeichen)
+puts sensor_id.strip.start_with?("TEMP") # true
+puts sensor_id.end_with?("01")     # false
+
+# String teilen
+parts = "Temperatur,22.5,Celsius".split(",")
+puts parts  # ["Temperatur", "22.5", "Celsius"]
+
+# String ersetzen
+text = "Sensor Status: FEHLER"
+puts text.gsub("FEHLER", "OK")  # "Sensor Status: OK"</code></pre>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-plus-circle"></i> String-Interpolation</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># String-Interpolation mit #{}
+sensor_name = "Temperatursensor"
+wert = 22.5
+einheit = "°C"
+
+# Einfache Interpolation
+nachricht = "#{sensor_name}: #{wert}#{einheit}"
+puts nachricht  # Temperatursensor: 22.5°C
+
+# Mit Berechnungen
+zeit = Time.now
+status_text = "#{sensor_name} um #{zeit.strftime('%H:%M')} - Wert: #{wert + 0.5}"
+
+# Multi-line Strings mit Interpolation
+bericht = <<~ENDE
+  === Sensor Bericht ===
+  Name: #{sensor_name}
+  Aktueller Wert: #{wert}#{einheit}
+  Status: #{wert > 20 ? "Normal" : "Niedrig"}
+  Zeitstempel: #{zeit}
+ENDE
+
+puts bericht</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Blöcke und Iteratoren -->
+    <section class="mb-4" id="bloecke">
+      <h2 class="h5">7. Blöcke und Iteratoren</h2>
+      <p>Blöcke sind eines der mächtigsten Features von Ruby und werden in IHK-Aufgaben häufig zur Datenverarbeitung verwendet.</p>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-arrow-repeat"></i> Block-Syntax</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Block mit do...end (mehrzeilig)
+[1, 2, 3, 4, 5].each do |zahl|
+  puts "Zahl: #{zahl}"
+end
+
+# Block mit {...} (einzeilig)
+[1, 2, 3, 4, 5].each { |zahl| puts zahl * 2 }
+
+# Block ohne Parameter
+3.times do
+  puts "Hallo Welt!"
+end
+
+# Block mit Index
+["A", "B", "C"].each_with_index do |buchstabe, index|
+  puts "#{index}: #{buchstabe}"
+end
+
+# Verschachtelte Blöcke
+matrix = [[1, 2], [3, 4], [5, 6]]
+matrix.each do |zeile|
+  zeile.each do |element|
+    puts element
+  end
+end</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-funnel"></i> Iterator-Methoden</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># select - Elemente filtern
+messwerte = [10.5, 12.1, 15.2, 11.8, 9.9]
+gueltige = messwerte.select { |wert| wert >= 11.0 && wert <= 13.0 }
+puts gueltige  # [12.1, 11.8]
+
+# map - Elemente transformieren
+fahrenheit = [68, 77, 86, 95]
+celsius = fahrenheit.map { |f| (f - 32) * 5.0 / 9.0 }
+puts celsius.map { |c| c.round(1) }
+
+# reject - Gegenteil von select
+ungueltige = messwerte.reject { |wert| wert >= 11.0 && wert <= 13.0 }
+puts ungueltige  # [10.5, 15.2, 9.9]
+
+# find - Erstes passendes Element
+erster_hoher_wert = messwerte.find { |wert| wert > 12.0 }
+puts erster_hoher_wert  # 15.2
+
+# all? und any?
+alle_positiv = messwerte.all? { |wert| wert > 0 }
+mindestens_einer_hoch = messwerte.any? { |wert| wert > 15 }</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <div class="alert alert-primary" role="status">
+          <h4 class="h6"><i class="bi bi-code-square"></i> Praktisches Beispiel: Sensordaten verarbeiten</h4>
+          <pre class="bg-dark text-white p-3 rounded"><code># Sensordaten aus IHK-ähnlicher Aufgabe
+sensor_daten = [
+  { id: "TEMP_01", wert: 22.5, einheit: "°C", status: "OK" },
+  { id: "TEMP_02", wert: 45.8, einheit: "°C", status: "WARNUNG" },
+  { id: "DRUCK_01", wert: 1.013, einheit: "bar", status: "OK" },
+  { id: "TEMP_03", wert: 18.2, einheit: "°C", status: "OK" }
+]
+
+# Alle Temperatursensoren finden
+temp_sensoren = sensor_daten.select { |sensor| sensor[:id].include?("TEMP") }
+puts "Temperatursensoren: #{temp_sensoren.length}"
+
+# Durchschnittstemperatur berechnen
+temp_werte = temp_sensoren.map { |sensor| sensor[:wert] }
+durchschnitt = temp_werte.sum / temp_werte.length
+puts "Durchschnittstemperatur: #{durchschnitt.round(2)}°C"
+
+# Sensoren mit Warnungen
+warnungen = sensor_daten.select { |sensor| sensor[:status] == "WARNUNG" }
+puts "Warnungen von: #{warnungen.map { |s| s[:id] }.join(', ')}"
+
+# Status-Übersicht erstellen
+status_uebersicht = sensor_daten.group_by { |sensor| sensor[:status] }
+status_uebersicht.each do |status, sensoren|
+  puts "#{status}: #{sensoren.length} Sensoren"
+end</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Objektorientierung in Ruby -->
+    <section class="mb-4" id="oop">
+      <h2 class="h5">8. Objektorientierung in Ruby umsetzen</h2>
+      <p>Die Struktur orientiert sich direkt am UML-Diagramm. Attribute werden zu Instanzvariablen, Methoden übernehmen den Namen eins zu eins. Getter und Setter steuerst du mit <code>attr_reader</code>, <code>attr_writer</code> oder <code>attr_accessor</code>.</p>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-box"></i> Grundlegende Klassen</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Einfache Klasse
+class Sensor
+  # Getter und Setter automatisch erstellen
+  attr_accessor :id, :wert, :einheit
+  attr_reader :erstellungszeit
+  
+  def initialize(id, einheit = "V")
+    @id = id
+    @einheit = einheit
+    @wert = 0.0
+    @erstellungszeit = Time.now
+  end
+  
+  def messe_wert(neuer_wert)
+    @wert = neuer_wert
+    puts "#{@id}: #{@wert} #{@einheit}"
+  end
+  
+  def gueltig?
+    @wert >= 0 && @wert <= 100
+  end
+end
+
+# Objekte erstellen und verwenden
+temp_sensor = Sensor.new("TEMP_01", "°C")
+temp_sensor.messe_wert(22.5)
+puts temp_sensor.gueltig?  # true
+
+# Attribute direkt zuweisen (wegen attr_accessor)
+temp_sensor.wert = 25.0
+puts "Neue Temperatur: #{temp_sensor.wert}#{temp_sensor.einheit}"</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-gear-wide-connected"></i> Erweiterte Klasse</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Klasse mit privaten Methoden und Validierung
+class MesswertSensor
+  attr_reader :id, :messreihe
+  attr_accessor :grenzwert_min, :grenzwert_max
+  
+  def initialize(id, min = 0, max = 100)
+    @id = id
+    @grenzwert_min = min
+    @grenzwert_max = max
+    @messreihe = []
+    @fehleranzahl = 0
+  end
+  
+  def add_messwert(wert)
+    if gueltig?(wert)
+      @messreihe << wert
+      protokolliere("Gültiger Wert: #{wert}")
+    else
+      @fehleranzahl += 1
+      protokolliere("FEHLER - Ungültiger Wert: #{wert}")
+    end
+  end
+  
+  def durchschnitt
+    return 0.0 if @messreihe.empty?
+    @messreihe.sum / @messreihe.length.to_f
+  end
+  
+  def statistik
+    {
+      anzahl_messungen: @messreihe.length,
+      durchschnitt: durchschnitt.round(2),
+      minimum: @messreihe.min,
+      maximum: @messreihe.max,
+      fehler: @fehleranzahl
+    }
+  end
+  
+  private
+  
+  def gueltig?(wert)
+    wert >= @grenzwert_min && wert <= @grenzwert_max
+  end
+  
+  def protokolliere(nachricht)
+    puts "[#{Time.now.strftime('%H:%M:%S')}] #{@id}: #{nachricht}"
+  end
+end</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <pre class="bg-dark text-white p-3 rounded" aria-label="Ruby Klasse Akku"><code># Basierend auf der Aufgabe Messplatz (W24/25)
+class Akku
+  attr_reader :id
+  attr_accessor :nennkapazitaet
+
+  def initialize(id, nennkapazitaet)
+    @id = id
+    @nennkapazitaet = nennkapazitaet
+    @messreihenliste = []
+  end
+
+  def add_messreihe(messreihe)
+    @messreihenliste << messreihe
+  end
+
+  def durchschnitt_kapazitaet
+    return 0.0 if @messreihenliste.empty?
+    summe = @messreihenliste.sum(&:kapazitaet)
+    summe / @messreihenliste.size.to_f
+  end
+  
+  def to_s
+    "Akku #{@id}: #{@nennkapazitaet}mAh, #{@messreihenliste.length} Messreihen"
+  end
+end</code></pre>
+        <p>Die Methode <code>sum(&:kapazitaet)</code> zeigt ein typisches Ruby-Idiom: Mit dem Symbol <code>&amp;:</code> rufst du bei allen Elementen der Liste dieselbe Methode auf. So bleibt dein Code kurz und gut lesbar.</p>
+      </div>
+    </section>
+
+    <!-- 9. Vererbung und Polymorphismus -->
+    <section class="mb-4" id="vererbung">
+      <h2 class="h5">9. Vererbung und Polymorphismus</h2>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-diagram-3"></i> Einfache Vererbung</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Basisklasse
+class Geraet
+  attr_reader :id, :name
+  attr_accessor :aktiv
+  
+  def initialize(id, name)
+    @id = id
+    @name = name
+    @aktiv = false
+  end
+  
+  def einschalten
+    @aktiv = true
+    puts "#{@name} eingeschaltet"
+  end
+  
+  def ausschalten
+    @aktiv = false
+    puts "#{@name} ausgeschaltet"
+  end
+  
+  def status
+    @aktiv ? "AN" : "AUS"
+  end
+end
+
+# Abgeleitete Klasse
+class Sensor < Geraet
+  attr_accessor :messwert, :einheit
+  
+  def initialize(id, name, einheit = "V")
+    super(id, name)  # Konstruktor der Elternklasse aufrufen
+    @einheit = einheit
+    @messwert = 0.0
+  end
+  
+  def messen
+    return nil unless @aktiv
+    @messwert = rand(0.0..10.0).round(2)
+    puts "#{@name} misst: #{@messwert} #{@einheit}"
+    @messwert
+  end
+  
+  # Methode überschreiben
+  def status
+    basis_status = super  # Eltern-Methode aufrufen
+    return basis_status unless @aktiv
+    "#{basis_status} - Aktueller Wert: #{@messwert} #{@einheit}"
+  end
+end</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-arrows-expand"></i> Weitere Spezialisierung</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Weitere Spezialisierung
+class TemperaturSensor < Sensor
+  def initialize(id, name)
+    super(id, name, "°C")
+    @alarm_temperatur = 40.0
+  end
+  
+  def messen
+    super
+    pruefe_alarm if @aktiv
+    @messwert
+  end
+  
+  private
+  
+  def pruefe_alarm
+    if @messwert > @alarm_temperatur
+      puts "ALARM: #{@name} zu heiß! #{@messwert}°C"
+    end
+  end
+end
+
+class DruckSensor < Sensor
+  def initialize(id, name)
+    super(id, name, "bar")
+    @normaldruck = 1.013
+  end
+  
+  def messen
+    super
+    abweichung = (@messwert - @normaldruck).abs
+    if abweichung > 0.1
+      puts "WARNUNG: Druckabweichung #{abweichung.round(3)} bar"
+    end
+    @messwert
+  end
+end
+
+# Polymorphismus - gleiche Schnittstelle, unterschiedliches Verhalten
+sensoren = [
+  TemperaturSensor.new("T001", "Raumtemperatur"),
+  DruckSensor.new("P001", "Luftdruck"),
+  Sensor.new("G001", "Generischer Sensor", "A")
+]
+
+sensoren.each do |sensor|
+  sensor.einschalten
+  sensor.messen      # Jeder Sensor verhält sich anders
+  puts sensor.status
+  puts "---"
+end</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Module und Mixins -->
+    <section class="mb-4" id="module">
+      <h2 class="h5">10. Module und Mixins</h2>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-puzzle"></i> Module definieren</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Modul mit wiederverwendbaren Methoden
+module Protokollierung
+  def protokolliere(nachricht, level = "INFO")
+    zeitstempel = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+    puts "[#{zeitstempel}] #{level}: #{nachricht}"
+  end
+  
+  def fehler_protokollieren(nachricht)
+    protokolliere(nachricht, "FEHLER")
+  end
+  
+  def debug_protokollieren(nachricht)
+    protokolliere(nachricht, "DEBUG")
+  end
+end
+
+module Statistiken
+  def durchschnitt(werte)
+    return 0.0 if werte.empty?
+    werte.sum / werte.length.to_f
+  end
+  
+  def standardabweichung(werte)
+    return 0.0 if werte.length < 2
+    mittelwert = durchschnitt(werte)
+    varianz = werte.sum { |x| (x - mittelwert) ** 2 } / werte.length.to_f
+    Math.sqrt(varianz)
+  end
+  
+  def ausreisser(werte, faktor = 2.0)
+    return [] if werte.length < 3
+    mittel = durchschnitt(werte)
+    std_abw = standardabweichung(werte)
+    werte.select { |wert| (wert - mittel).abs > faktor * std_abw }
+  end
+end</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-plug"></i> Module verwenden</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Module in Klassen einbinden
+class ErweiterterSensor
+  include Protokollierung    # Instanzmethoden hinzufügen
+  include Statistiken
+  
+  attr_reader :id, :messwerte
+  
+  def initialize(id)
+    @id = id
+    @messwerte = []
+    protokolliere("Sensor #{id} initialisiert")
+  end
+  
+  def add_messwert(wert)
+    if wert.nil? || wert < 0
+      fehler_protokollieren("Ungültiger Messwert: #{wert}")
+      return
+    end
+    
+    @messwerte << wert
+    protokolliere("Messwert hinzugefügt: #{wert}")
+    
+    # Ausreißer prüfen
+    if @messwerte.length > 5
+      ausreisser_werte = ausreisser(@messwerte)
+      unless ausreisser_werte.empty?
+        protokolliere("Ausreißer erkannt: #{ausreisser_werte}")
+      end
+    end
+  end
+  
+  def statistik_bericht
+    return "Keine Daten vorhanden" if @messwerte.empty?
+    
+    <<~BERICHT
+      === Statistik für Sensor #{@id} ===
+      Anzahl Messwerte: #{@messwerte.length}
+      Durchschnitt: #{durchschnitt(@messwerte).round(2)}
+      Standardabweichung: #{standardabweichung(@messwerte).round(2)}
+      Minimum: #{@messwerte.min}
+      Maximum: #{@messwerte.max}
+      Ausreißer: #{ausreisser(@messwerte)}
+    BERICHT
+  end
+end
+
+# Verwendung
+sensor = ErweiterterSensor.new("STAT_001")
+[12.1, 11.9, 12.0, 12.3, 11.8, 25.0, 12.2].each do |wert|
+  sensor.add_messwert(wert)
+end
+
+puts sensor.statistik_bericht</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Fehlerbehandlung -->
+    <section class="mb-4" id="fehlerbehandlung">
+      <h2 class="h5">11. Fehlerbehandlung (Exception Handling)</h2>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-exclamation-triangle"></i> Try/Rescue/Ensure</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Grundlegende Fehlerbehandlung
+def sichere_division(a, b)
+  begin
+    ergebnis = a / b
+    puts "#{a} / #{b} = #{ergebnis}"
+    return ergebnis
+  rescue ZeroDivisionError => e
+    puts "FEHLER: Division durch Null nicht möglich!"
+    puts "Details: #{e.message}"
+    return nil
+  rescue TypeError => e
+    puts "FEHLER: Ungültiger Datentyp!"
+    return nil
+  rescue => e  # Alle anderen Fehler abfangen
+    puts "Unerwarteter Fehler: #{e.class} - #{e.message}"
+    return nil
+  ensure
+    puts "Division-Operation beendet"
+  end
+end
+
+# Tests
+sichere_division(10, 2)    # Normal
+sichere_division(10, 0)    # Division durch Null
+sichere_division("a", 2)   # Typfehler</code></pre>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="p-3 bg-white shadow-sm h-100 rounded">
+            <h3 class="h6"><i class="bi bi-shield-exclamation"></i> Eigene Exceptions</h3>
+            <pre class="bg-dark text-white p-3 rounded"><code># Eigene Exception-Klassen
+class SensorFehler < StandardError; end
+class MesswertUngueltigFehler < SensorFehler; end
+class SensorNichtVerfuegbarFehler < SensorFehler; end
+
+class RobusterSensor
+  def initialize(id, min_wert = 0, max_wert = 100)
+    @id = id
+    @min_wert = min_wert
+    @max_wert = max_wert
+    @verbunden = true
+  end
+  
+  def messe_wert
+    raise SensorNichtVerfuegbarFehler, 
+          "Sensor #{@id} nicht verfügbar" unless @verbunden
+    
+    # Simuliere Messung
+    wert = rand(@min_wert - 10..@max_wert + 10)
+    
+    unless wert_gueltig?(wert)
+      raise MesswertUngueltigFehler, 
+            "Messwert #{wert} außerhalb des Bereichs #{@min_wert}..#{@max_wert}"
+    end
+    
+    wert
+  end
+  
+  def verbindung_trennen
+    @verbunden = false
+  end
+  
+  private
+  
+  def wert_gueltig?(wert)
+    wert >= @min_wert && wert <= @max_wert
+  end
+end
+
+# Fehlerbehandlung in der Anwendung
+sensor = RobusterSensor.new("ROBUST_01", 10, 30)
+
+10.times do
+  begin
+    wert = sensor.messe_wert
+    puts "Messung erfolgreich: #{wert}"
+  rescue MesswertUngueltigFehler => e
+    puts "Messwert-Fehler: #{e.message}"
+  rescue SensorNichtVerfuegbarFehler => e
+    puts "Sensor-Fehler: #{e.message}"
+    break
+  end
+  
+  # Simuliere gelegentliche Verbindungsprobleme
+  sensor.verbindung_trennen if rand <

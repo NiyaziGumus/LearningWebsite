@@ -21,41 +21,79 @@
     </nav>
 
     <h1 class="section-title">Datenschutz &amp; Datensicherheit unterscheiden</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Datenschutz kümmert sich um personenbezogene Daten und Rechte von Menschen. Datensicherheit schützt Informationen allgemein vor Verlust oder Missbrauch. Die CIA-Triade zeigt die drei zentralen Schutzziele.</p>
-    </section>
+    <div class="accordion" id="networkPrivacyAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkPrivacyIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#networkPrivacyIntroCollapse" aria-expanded="true" aria-controls="networkPrivacyIntroCollapse">
+            <i class="bi bi-person-lock me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="networkPrivacyIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="networkPrivacyIntro" data-bs-parent="#networkPrivacyAccordion">
+          <div class="accordion-body">
+            <p>Datenschutz kümmert sich um personenbezogene Daten und Rechte von Menschen. Datensicherheit schützt Informationen allgemein vor Verlust oder Missbrauch. Die CIA-Triade zeigt die drei zentralen Schutzziele.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li><strong>Datenschutz:</strong> Regelt, wer personenbezogene Daten erheben und nutzen darf.</li>
-        <li><strong>Datensicherheit:</strong> Technische und organisatorische Maßnahmen gegen Angriffe oder Fehler.</li>
-        <li><strong>Vertraulichkeit (Confidentiality):</strong> Nur Berechtigte dürfen lesen, z. B. durch Verschlüsselung.</li>
-        <li><strong>Integrität (Integrity):</strong> Daten bleiben unverändert, z. B. durch Checksummen oder Signaturen.</li>
-        <li><strong>Verfügbarkeit (Availability):</strong> Systeme stehen bereit, z. B. durch Redundanz.</li>
-        <li>Rechtemanagement und Protokollierung unterstützen alle drei Ziele.</li>
-        <li>Backups schützen vor Verlust, müssen aber selbst verschlüsselt werden.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkPrivacyKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkPrivacyKeyFactsCollapse" aria-expanded="false" aria-controls="networkPrivacyKeyFactsCollapse">
+            <i class="bi bi-lightbulb me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="networkPrivacyKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="networkPrivacyKeyFacts" data-bs-parent="#networkPrivacyAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><strong>Datenschutz:</strong> Regelt, wer personenbezogene Daten erheben und nutzen darf.</li>
+              <li><strong>Datensicherheit:</strong> Technische und organisatorische Maßnahmen gegen Angriffe oder Fehler.</li>
+              <li><strong>Vertraulichkeit (Confidentiality):</strong> Nur Berechtigte dürfen lesen, z. B. durch Verschlüsselung.</li>
+              <li><strong>Integrität (Integrity):</strong> Daten bleiben unverändert, z. B. durch Checksummen oder Signaturen.</li>
+              <li><strong>Verfügbarkeit (Availability):</strong> Systeme stehen bereit, z. B. durch Redundanz.</li>
+              <li>Rechtemanagement und Protokollierung unterstützen alle drei Ziele.</li>
+              <li>Backups schützen vor Verlust, müssen aber selbst verschlüsselt werden.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="CIA Triade Beispiele"><code>Vertraulichkeit: HTTPS, verschlüsselte Datenbanken
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkPrivacyExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkPrivacyExampleCollapse" aria-expanded="false" aria-controls="networkPrivacyExampleCollapse">
+            <i class="bi bi-card-checklist me-2" aria-hidden="true"></i>
+            Beispiel: CIA-Triade
+          </button>
+        </h2>
+        <div id="networkPrivacyExampleCollapse" class="accordion-collapse collapse" aria-labelledby="networkPrivacyExample" data-bs-parent="#networkPrivacyAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="CIA Triade Beispiele"><code>Vertraulichkeit: HTTPS, verschlüsselte Datenbanken
 Integrität: Hash-Werte vergleichen
 Verfügbarkeit: Cluster mit Failover</code></pre>
-      <p>Setze für jede Facette passende Maßnahmen ein. Nur zusammen sorgen sie für zuverlässige Systeme.</p>
-    </section>
+            <p>Setze für jede Facette passende Maßnahmen ein. Nur zusammen sorgen sie für zuverlässige Systeme.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="2_sicherheit_protokolle.html">Technische Schutzmaßnahmen vertiefen</a></li>
-        <li><a href="1_netzwerk_grundlagen.html">Adressbereiche für Sicherheitszonen planen</a></li>
-        <li><a href="../5_BWL_Projektmanagement/1_kosten_leistungsrechnung.html">Kosten für Sicherheitsmaßnahmen kalkulieren</a></li>
-        <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Datenschutz im Web-Frontend umsetzen</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkPrivacyNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkPrivacyNextStepsCollapse" aria-expanded="false" aria-controls="networkPrivacyNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="networkPrivacyNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="networkPrivacyNextSteps" data-bs-parent="#networkPrivacyAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="2_sicherheit_protokolle.html">Technische Schutzmaßnahmen vertiefen</a></li>
+              <li><a href="1_netzwerk_grundlagen.html">Adressbereiche für Sicherheitszonen planen</a></li>
+              <li><a href="../5_BWL_Projektmanagement/1_kosten_leistungsrechnung.html">Kosten für Sicherheitsmaßnahmen kalkulieren</a></li>
+              <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Datenschutz im Web-Frontend umsetzen</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

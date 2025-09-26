@@ -21,43 +21,81 @@
     </nav>
 
     <h1 class="section-title">REST &amp; Sicherheit</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Web-Anwendungen tauschen Daten über HTTP aus. REST beschreibt einfache Regeln für Endpunkte. Sicherheit schützt vor Angriffen wie SQL-Injection und sorgt für verschlüsselten Verkehr.</p>
-    </section>
+    <div class="accordion" id="webSecurityAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="webSecurityIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#webSecurityIntroCollapse" aria-expanded="true" aria-controls="webSecurityIntroCollapse">
+            <i class="bi bi-shield-lock-fill me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="webSecurityIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="webSecurityIntro" data-bs-parent="#webSecurityAccordion">
+          <div class="accordion-body">
+            <p>Web-Anwendungen tauschen Daten über HTTP aus. REST beschreibt einfache Regeln für Endpunkte. Sicherheit schützt vor Angriffen wie SQL-Injection und sorgt für verschlüsselten Verkehr.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>REST nutzt eindeutige URLs und HTTP-Methoden wie GET, POST, PUT, DELETE.</li>
-        <li>GET liest Daten, POST legt an, PUT aktualisiert, DELETE entfernt.</li>
-        <li>JSON ist ein häufiges Austauschformat wegen der einfachen Struktur.</li>
-        <li>SQL-Injection entsteht, wenn Eingaben direkt in SQL landen.</li>
-        <li>Prepared Statements binden Parameter und verhindern Code-Einschleusung.</li>
-        <li>HTTPS verwendet TLS, damit Daten unterwegs verschlüsselt bleiben.</li>
-        <li>Cookies und Tokens sollten sicher (HttpOnly, Secure) gesetzt werden.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="webSecurityKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#webSecurityKeyFactsCollapse" aria-expanded="false" aria-controls="webSecurityKeyFactsCollapse">
+            <i class="bi bi-lightbulb me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="webSecurityKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="webSecurityKeyFacts" data-bs-parent="#webSecurityAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>REST nutzt eindeutige URLs und HTTP-Methoden wie GET, POST, PUT, DELETE.</li>
+              <li>GET liest Daten, POST legt an, PUT aktualisiert, DELETE entfernt.</li>
+              <li>JSON ist ein häufiges Austauschformat wegen der einfachen Struktur.</li>
+              <li>SQL-Injection entsteht, wenn Eingaben direkt in SQL landen.</li>
+              <li>Prepared Statements binden Parameter und verhindern Code-Einschleusung.</li>
+              <li>HTTPS verwendet TLS, damit Daten unterwegs verschlüsselt bleiben.</li>
+              <li>Cookies und Tokens sollten sicher (HttpOnly, Secure) gesetzt werden.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="REST Beispiel"><code>POST /api/kunden
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="webSecurityExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#webSecurityExampleCollapse" aria-expanded="false" aria-controls="webSecurityExampleCollapse">
+            <i class="bi bi-code-square me-2" aria-hidden="true"></i>
+            Beispiel: REST-Request
+          </button>
+        </h2>
+        <div id="webSecurityExampleCollapse" class="accordion-collapse collapse" aria-labelledby="webSecurityExample" data-bs-parent="#webSecurityAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="REST Beispiel"><code>POST /api/kunden
 {
   "name": "Sina",
   "ort": "Leipzig"
 }</code></pre>
-      <p>Der Client sendet neue Kundendaten im JSON-Format. Der Server prüft die Eingaben und nutzt Prepared Statements, bevor sie in die Datenbank kommen.</p>
-    </section>
+            <p>Der Client sendet neue Kundendaten im JSON-Format. Der Server prüft die Eingaben und nutzt Prepared Statements, bevor sie in die Datenbank kommen.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_html.html">Formularstruktur sicher füllen</a></li>
-        <li><a href="2_css.html">Sichere Seiten trotzdem schön gestalten</a></li>
-        <li><a href="../2_Datenbanken/3_datenbankkonzepte.html">Transaktionen mit HTTPS kombinieren</a></li>
-        <li><a href="../4_Netzwerke/2_sicherheit_protokolle.html">Netzwerkprotokolle zum Schutz verstehen</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="webSecurityNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#webSecurityNextStepsCollapse" aria-expanded="false" aria-controls="webSecurityNextStepsCollapse">
+            <i class="bi bi-compass me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="webSecurityNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="webSecurityNextSteps" data-bs-parent="#webSecurityAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="1_html.html">Formularstruktur sicher füllen</a></li>
+              <li><a href="2_css.html">Sichere Seiten trotzdem schön gestalten</a></li>
+              <li><a href="../2_Datenbanken/3_datenbankkonzepte.html">Transaktionen mit HTTPS kombinieren</a></li>
+              <li><a href="../4_Netzwerke/2_sicherheit_protokolle.html">Netzwerkprotokolle zum Schutz verstehen</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

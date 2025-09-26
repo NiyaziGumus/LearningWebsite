@@ -20,39 +20,77 @@
     </nav>
 
     <h1 class="section-title">Datenbanken – Überblick</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Datenbanken speichern Informationen strukturiert und sicher. Du modellierst zuerst, wie Daten zusammenhängen, und nutzt dann SQL zum Abfragen. So bleiben Daten konsistent und schnell verfügbar.</p>
-    </section>
+    <div class="accordion" id="dbOverviewAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbOverviewIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#dbOverviewIntroCollapse" aria-expanded="true" aria-controls="dbOverviewIntroCollapse">
+            <i class="bi bi-journal-text me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="dbOverviewIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="dbOverviewIntro" data-bs-parent="#dbOverviewAccordion">
+          <div class="accordion-body">
+            <p>Datenbanken speichern Informationen strukturiert und sicher. Du modellierst zuerst, wie Daten zusammenhängen, und nutzt dann SQL zum Abfragen. So bleiben Daten konsistent und schnell verfügbar.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>Ein Datenmodell beschreibt Tabellen, Attribute und Beziehungen.</li>
-        <li>Normalformen verhindern doppelte oder widersprüchliche Einträge.</li>
-        <li>SQL dient zum Lesen, Schreiben und Auswerten der Daten.</li>
-        <li>Joins verbinden Tabellen über Schlüssel.</li>
-        <li>Transaktionen sichern mehrere Schritte ab.</li>
-        <li>ACID-Regeln sorgen für Zuverlässigkeit.</li>
-        <li>Primär- und Fremdschlüssel verknüpfen Datensätze eindeutig.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbOverviewKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbOverviewKeyFactsCollapse" aria-expanded="false" aria-controls="dbOverviewKeyFactsCollapse">
+            <i class="bi bi-lightning-charge-fill me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="dbOverviewKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="dbOverviewKeyFacts" data-bs-parent="#dbOverviewAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>Ein Datenmodell beschreibt Tabellen, Attribute und Beziehungen.</li>
+              <li>Normalformen verhindern doppelte oder widersprüchliche Einträge.</li>
+              <li>SQL dient zum Lesen, Schreiben und Auswerten der Daten.</li>
+              <li>Joins verbinden Tabellen über Schlüssel.</li>
+              <li>Transaktionen sichern mehrere Schritte ab.</li>
+              <li>ACID-Regeln sorgen für Zuverlässigkeit.</li>
+              <li>Primär- und Fremdschlüssel verknüpfen Datensätze eindeutig.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="SQL Beispiel"><code>SELECT name FROM kunden WHERE ort = 'Berlin';</code></pre>
-      <p>Die Abfrage liefert alle Kunden aus Berlin. Mit <code>WHERE</code> filterst du gezielt.</p>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbOverviewExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbOverviewExampleCollapse" aria-expanded="false" aria-controls="dbOverviewExampleCollapse">
+            <i class="bi bi-code-slash me-2" aria-hidden="true"></i>
+            Beispielabfrage
+          </button>
+        </h2>
+        <div id="dbOverviewExampleCollapse" class="accordion-collapse collapse" aria-labelledby="dbOverviewExample" data-bs-parent="#dbOverviewAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="SQL Beispiel"><code>SELECT name FROM kunden WHERE ort = 'Berlin';</code></pre>
+            <p>Die Abfrage liefert alle Kunden aus Berlin. Mit <code>WHERE</code> filterst du gezielt.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_modellierung_normalisierung.html">ER-Modelle und Normalformen wiederholen</a></li>
-        <li><a href="2_sql.html">SQL-Befehle mit JOINs anwenden</a></li>
-        <li><a href="3_datenbankkonzepte.html">Transaktionen und ACID verstehen</a></li>
-        <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Prepared Statements im Web nutzen</a></li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="dbOverviewNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dbOverviewNextStepsCollapse" aria-expanded="false" aria-controls="dbOverviewNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="dbOverviewNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="dbOverviewNextSteps" data-bs-parent="#dbOverviewAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="1_modellierung_normalisierung.html">ER-Modelle und Normalformen wiederholen</a></li>
+              <li><a href="2_sql.html">SQL-Befehle mit JOINs anwenden</a></li>
+              <li><a href="3_datenbankkonzepte.html">Transaktionen und ACID verstehen</a></li>
+              <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">Prepared Statements im Web nutzen</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

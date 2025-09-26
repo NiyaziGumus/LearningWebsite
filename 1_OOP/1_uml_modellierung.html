@@ -3,14 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OOP – UML-Modellierung</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>OOP – Der komplette UML-Guide für die IHK-Prüfung</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .alert-info {
+        background-color: #cff4fc;
+        border-color: #b6effb;
+    }
+    .table-bordered {
+        border-color: #dee2e6;
+    }
+    .table thead th {
+        background-color: #e9ecef;
+    }
+    h6 {
+        font-weight: bold;
+        color: #0d6efd;
+        margin-top: 1.5rem;
+    }
+  </style>
 </head>
 <body>
   
-
   <main class="container my-4">
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -20,59 +36,210 @@
       </ol>
     </nav>
 
-    <h1 class="section-title">UML-Klassendiagramme lesen</h1>
+    <h1 class="section-title">UML-Klassendiagramme: Die Blaupause deiner Software</h1>
     <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Klassendiagramme zeigen, wie Klassen zusammenarbeiten. Du erkennst Attribute, Methoden und Beziehungen auf einen Blick. So planst du dein Programm, bevor du Code schreibst.</p>
+      <p>Stell dir vor, du baust ein Haus. Du fängst nicht einfach an zu mauern, sondern schaust zuerst auf einen Bauplan. In der Softwareentwicklung ist ein <strong>UML-Klassendiagramm</strong> genau das: der Bauplan für dein Programm. Es zeigt dir alle Bauteile (Klassen) und wie sie miteinander verbunden sind. Für die IHK-Prüfung ist es super wichtig, dass du diese Pläne lesen und verstehen kannst.</p>
     </section>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>Rechtecke stehen für Klassen und enthalten oben den Namen.</li>
-        <li>Pfeile mit leerer Spitze bedeuten Vererbung (Generalisierung).</li>
-        <li>Eine einfache Linie ist eine Assoziation, oft mit Multiplizität 1..*, 0..1 usw.</li>
-        <li>Aggregation wird mit einer leeren Raute dargestellt, Komposition mit einer gefüllten.</li>
-        <li>Attribute haben Sichtbarkeiten wie <code>+</code> (public) oder <code>-</code> (private).</li>
-        <li>Methoden werden mit Parametern und Rückgabetyp wie <code>+zeige()</code> notiert.</li>
-        <li>Notizen oder Interfaces kannst du als gestrichelte Elemente hinzufügen.</li>
-      </ul>
-    </section>
+    <div class="accordion" id="umlConceptsAccordion">
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="Mermaid Klassendiagramm"><code>classDiagram
-  class Kurs {
-    -String titel
-    +String getTitel()
-  }
-  class Teilnehmer {
-    -String name
-    +String getName()
-  }
-  class OnlineKurs {
-    +String url
-  }
-  Kurs o-- Teilnehmer : nimmt teil
-  OnlineKurs --|&gt; Kurs
-</code></pre>
-      <p>Die Komposition <code>o--</code> zeigt, dass ein <code>Kurs</code> mehrere <code>Teilnehmer</code> enthält. <code>OnlineKurs</code> erbt Eigenschaften von <code>Kurs</code>.</p>
-    </section>
+      <!-- 1. Die Klasse -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="bi bi-box-seam-fill me-2"></i><strong>Was ist eine Klasse? (Der Bauplan für ein Objekt)</strong>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#umlConceptsAccordion">
+          <div class="accordion-body">
+            <p>Eine Klasse ist wie ein Rezept oder ein Bauplan. Sie beschreibt, welche Eigenschaften (Attribute) und Fähigkeiten (Methoden) ein Objekt später haben wird. Im Diagramm hat eine Klasse drei Bereiche:</p>
+            <ul>
+              <li><strong>Oben:</strong> Der Klassenname (z.B. `Akku`).</li>
+              <li><strong>Mitte:</strong> Die Attribute (z.B. `-id: int`). Das Minus-Zeichen <code>-</code> bedeutet <code>private</code> (nur die Klasse selbst darf zugreifen). Ein Plus <code>+</code> bedeutet <code>public</code> (jeder darf zugreifen).</li>
+              <li><strong>Unten:</strong> Die Methoden (z.B. `+addMessreihe(...)`).</li>
+            </ul>
+            <p><strong>Beispiel aus IHK-Prüfung W24/25:</strong> Die Klasse `Akku`.</p>
+            
+            <pre><code># So wird der Plan in Ruby-Code umgesetzt:
+class Akku
+  # -id: int -> wird zu @id (private)
+  # Mit attr_reader machen wir eine öffentliche Lese-Methode (Getter).
+  attr_reader :id
+  
+  # -nennkapazitaet: int -> wird zu @nennkapazitaet
+  attr_accessor :nennkapazitaet
 
-    <section class="mb-4">
+  def initialize(id, nennkapazitaet)
+    @id = id
+    @nennkapazitaet = nennkapazitaet
+    @messreihenliste = [] # Speichert die Beziehung zu Messreihe
+  end
+
+  # +addMessreihe(...)
+  def add_messreihe(messreihe)
+    @messreihenliste << messreihe
+  end
+end</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Beziehungen -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="bi bi-diagram-3-fill me-2"></i><strong>Beziehungen: Wie Klassen miteinander reden</strong>
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#umlConceptsAccordion">
+          <div class="accordion-body">
+            <p>Das Wichtigste an UML sind die Verbindungen zwischen den Klassen. Es gibt zwei Hauptfamilien von Beziehungen:</p>
+
+            <h6>Typ 1: Vererbung ("Ist-ein")</h6>
+            <p>Symbol: Pfeil mit leerer, geschlossener Spitze (<code>──▷</code>)</p>
+            <p>Das ist eine <strong>"Ist-ein"</strong>-Beziehung. Die Unterklasse ist eine spezielle Version der Oberklasse und erbt ihre Eigenschaften.
+            <br><strong>Alltagsbeispiel:</strong> Ein `PKW` <strong>ist ein</strong> `Fahrzeug`.</p>
+            <p><strong>IHK-Beispiel (W24/25):</strong> Ein <code>Strom</code>-Messwert <strong>ist ein</strong> <code>Messwert</code>.</p>
+            <pre><code># "class Strom < Messwert" bedeutet: Strom erbt von Messwert.
+class Strom < Messwert
+  # ... spezielle Dinge nur für Strom ...
+end</code></pre>
+
+            <h6>Typ 2: "Hat-ein" / "Teil-von" Beziehungen</h6>
+            <p>Hier gibt es drei Abstufungen, von schwach nach stark. Sie zeigen, wie eng Klassen miteinander verbunden sind.</p>
+            
+            <p><strong>a) Assoziation (Lose Verbindung)</strong><br>Symbol: Einfache Linie (<code>───</code>)</p>
+            <p>Eine <strong>"Kennt-ein"</strong>-Beziehung. Die Klassen sind Partner und existieren unabhängig voneinander.<br>
+            <strong>Alltagsbeispiel:</strong> Ein `Lehrer` <strong>kennt</strong> ein `Fach`. Wenn der Lehrer die Schule verlässt, existiert das Fach weiter.</p>
+            
+            <p><strong>b) Aggregation (Teile können ohne das Ganze existieren)</strong><br>Symbol: Linie mit einer leeren Raute (<code>───◇</code>)</p>
+            <p>Eine <strong>"Hat-ein"</strong>-Beziehung. Das Ganze besteht aus Teilen, aber die Teile können auch ohne das Ganze existieren.<br>
+            <strong>Alltagsbeispiel:</strong> Ein `Team` <strong>hat</strong> `Spieler`. Löst sich das Team auf, sind die Spieler immer noch da und können in anderen Teams spielen.</p>
+            
+            <p><strong>c) Komposition (Teile sind vom Ganzen abhängig)</strong><br>Symbol: Linie mit einer gefüllten Raute (<code>───◆</code>)</p>
+            <p>Eine starke <strong>"Teil-von"</strong>-Beziehung. Die Teile können ohne das Ganze <strong>nicht</strong> existieren. Wird das Ganze gelöscht, sind die Teile auch weg.<br>
+            <strong>IHK-Beispiel (W22/23):</strong> Ein <code>Angebot</code> <strong>besteht aus</strong> <code>Bestellpositionen</code>. Löschst du das Angebot, sind die Positionen darin sinnlos und werden mitgelöscht.</p>
+
+            <h6 class="mt-4">Übersichtstabelle zum Vergleichen</h6>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Beziehungstyp</th>
+                        <th>Symbol</th>
+                        <th>Beschreibung</th>
+                        <th>Teil existiert alleine?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Assoziation</td>
+                        <td><code>───</code></td>
+                        <td>Kennt-ein (Partner)</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <td>Aggregation</td>
+                        <td><code>───◇</code></td>
+                        <td>Hat-ein (lose Teile)</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <td>Komposition</td>
+                        <td><code>───◆</code></td>
+                        <td>Besteht-aus (abhängige Teile)</td>
+                        <td>Nein</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Interfaces -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="bi bi-file-earmark-text-fill me-2"></i><strong>Interfaces: Ein Regelwerk für Klassen</strong>
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#umlConceptsAccordion">
+          <div class="accordion-body">
+            <p>Ein Interface ist ein Vertrag. Es schreibt vor, welche Methoden eine Klasse haben <strong>muss</strong>, aber nicht, wie diese Methoden funktionieren. Klassen können ein Interface "implementieren", um zu versprechen, dass sie sich an diesen Vertrag halten.</p>
+            <p>Symbol: Ein Kasten mit dem Zusatz <code>&lt;&lt;interface&gt;&gt;</code> und einer gestrichelten Pfeillinie (<code>- - -▷</code>) zur implementierenden Klasse.</p>
+            <p><strong>IHK-Beispiel (S22):</strong> Das Interface <code>ImportService</code> definiert, dass jeder Importer (z.B. für verschiedene Hersteller-Dateien) die gleichen Methoden wie <code>Read()</code> oder <code>GetDriveName()</code> haben muss. So kann das Hauptprogramm jeden Importer auf die gleiche Weise benutzen, egal wie er intern funktioniert.</p>
+            <pre><code># In Ruby simulieren wir Interfaces oft mit Modulen.
+# Das ist der "Vertrag":
+module ImportService
+  def read
+    raise NotImplementedError, "Jeder Importer muss eine 'read' Methode haben!"
+  end
+
+  def get_drive_name
+    raise NotImplementedError, "Jeder Importer muss 'get_drive_name' implementieren!"
+  end
+end
+
+# Diese Klasse "unterschreibt" den Vertrag:
+class Manufacturer1Importer
+  include ImportService # Verspricht, die Regeln von ImportService zu befolgen
+
+  def read
+    # ... hier steht der Code, um Datei von Hersteller 1 zu lesen ...
+  end
+
+  def get_drive_name
+    # ... hier steht der Code, um den Namen auszulesen ...
+  end
+end</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 4. Abstrakte Klassen -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="bi bi-puzzle-fill me-2"></i><strong>Spezialfall: Abstrakte Klassen & Methoden</strong>
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#umlConceptsAccordion">
+          <div class="accordion-body">
+            <p>Wenn ein Klassenname oder eine Methode <i>kursiv</i> geschrieben ist, bedeutet das <strong>abstrakt</strong>. Das ist ein Befehl an den Programmierer!</p>
+            <ul>
+              <li><strong>Abstrakte Klasse:</strong> Du darfst von dieser Klasse <strong>kein Objekt erzeugen</strong>. Sie ist nur eine Schablone für ihre Unterklassen. (IHK-Frage W24/25, Aufgabe 1.1)</li>
+              <li><strong>Abstrakte Methode:</strong> Diese Methode hat keinen Code in der Oberklasse. Jede Unterklasse ist <strong>gezwungen</strong>, eine eigene Implementierung für diese Methode zu schreiben.</li>
+            </ul>
+             <p><strong>IHK-Beispiel (W24/25):</strong> Die Klasse <code>Messwert</code> ist <i>abstrakt</i>. Ihre Methode <i><code>pruefeWert()</code></i> ist ebenfalls <i>abstrakt</i>. Das bedeutet: Jeder konkrete Messwert (wie <code>Strom</code>) MUSS eine eigene `pruefe_wert`-Methode haben, die genau sagt, wann ein Stromwert gültig ist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="alert alert-info mt-4">
+        <h4 class="alert-heading"><i class="bi bi-pencil-square me-2"></i>Übungsaufgabe im IHK-Stil</h4>
+        <p><strong>Aufgabe (basierend auf IHK-Prüfung W24/25, Aufgabe 1.4):</strong> Schau dir das Diagramm an. Die Aufgabe lautet:</p>
+        <p><i>"Jeder Messplatz kennt mehrere Akkus. Um den Alterungsprozess eines Akkus dokumentieren zu können, werden für jeden Akku mehrere Messreihen aufgenommen. Jede dieser Messreihen wiederum enthält mehrere Messwerte."</i></p>
+        
+        <p><strong>Deine Aufgabe:</strong> Erkläre die Beziehungen zwischen den Klassen und nenne die Multiplizitäten und die "Rollennamen" (also die Namen der Variablen, die die Beziehung speichern).</p>
+        <hr>
+        <p class="mb-0"><strong>Lösungs-Check:</strong></p>
+        <ul>
+            <li><code>Messplatz</code> <strong>hat 1..*</strong> <code>Akku</code>s. Die Beziehung wird in der Variable <code>akkuliste</code> gespeichert. (Assoziation)</li>
+            <li><code>Akku</code> <strong>hat 0..*</strong> <code>Messreihe</code>n. Die Beziehung wird in der Variable <code>messreihenliste</code> gespeichert. (Assoziation)</li>
+            <li><code>Messreihe</code> <strong>besteht aus 1..*</strong> <code>Messwert</code>en. Die Beziehung wird in der Variable <code>messwertliste</code> gespeichert. (Hier könnte man über Komposition argumentieren, da Messwerte ohne ihre Reihe kaum Sinn ergeben).</li>
+        </ul>
+    </div>
+
+    <section class="mt-5">
       <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="2_prinzipien_oop.html">OOP-Prinzipien im Detail ansehen</a></li>
-        <li><a href="3_implementierung.html">Modell in Java umsetzen</a></li>
-        <li><a href="4_entwurfsmuster.html">Observer-Muster im Diagramm verstehen</a></li>
-        <li><a href="../2_Datenbanken/1_modellierung_normalisierung.html">ER-Diagramm mit UML vergleichen</a></li>
-      </ul>
+      <div class="list-group">
+        <a href="2_prinzipien_oop.html" class="list-group-item list-group-item-action"><strong>Weiter zu den 4 Grundprinzipien der OOP</strong> <i class="bi bi-arrow-right-circle"></i><br>Verstehe jetzt Kapselung, Vererbung & Co. im Detail.</a>
+        <a href="3_implementierung.html" class="list-group-item list-group-item-action"><strong>Vom Diagramm zum Code: Die Implementierung</strong><br>Lerne, wie du ein komplettes Diagramm in Ruby umsetzt.</a>
+      </div>
     </section>
   </main>
 
-  
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

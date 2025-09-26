@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><a class="dropdown-item" href="${prefix}1_OOP/index.html" data-section="1_oop" data-page="1_oop/index.html">Überblick</a></li>
                 <li><a class="dropdown-item" href="${prefix}1_OOP/1_uml_modellierung.html" data-section="1_oop" data-page="1_oop/1_uml_modellierung.html">UML-Modellierung</a></li>
                 <li><a class="dropdown-item" href="${prefix}1_OOP/2_prinzipien_oop.html" data-section="1_oop" data-page="1_oop/2_prinzipien_oop.html">Prinzipien</a></li>
+                <li><a class="dropdown-item" href="${prefix}1_OOP/ruby_grundlagen.html" data-section="1_oop" data-page="1_oop/ruby_grundlagen.html">Ruby-Grundlagen</a></li>
                 <li><a class="dropdown-item" href="${prefix}1_OOP/3_implementierung.html" data-section="1_oop" data-page="1_oop/3_implementierung.html">Implementierung</a></li>
                 <li><a class="dropdown-item" href="${prefix}1_OOP/4_entwurfsmuster.html" data-section="1_oop" data-page="1_oop/4_entwurfsmuster.html">Entwurfsmuster</a></li>
               </ul>

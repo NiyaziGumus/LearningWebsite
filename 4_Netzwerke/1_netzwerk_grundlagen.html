@@ -18,47 +18,340 @@
       </ol>
     </nav>
 
-    <h1 class="section-title">IPv4-Vokabular verstehen</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Subnetting beschreibt, wie du ein Netzwerk in kleinere Netze teilst. Dafür musst du Begriffe wie Netz-ID, Subnetzmaske oder Broadcast kennen. Mit ihnen planst du Adressbereiche für Hosts.</p>
-    </section>
+    <h1 class="section-title">Zusammenfassung – IPv4/IPv6, CIDR, VLANs, Subnetting</h1>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
+    <div class="accordion" id="networkBasicsAccordion">
+    <!-- 1) Grundbegriffe (IPv4) -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsIPv4">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsIPv4Collapse" aria-expanded="true" aria-controls="networkBasicsIPv4Collapse">
+            <i class="bi bi-diagram-3-fill me-2" aria-hidden="true"></i>
+            1) Grundbegriffe (IPv4)
+          </button>
+        </h2>
+        <div id="networkBasicsIPv4Collapse" class="accordion-collapse collapse show" aria-labelledby="networkBasicsIPv4" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
       <ul>
-        <li><strong>Netz-ID:</strong> Erster Teil der Adresse, identifiziert das Subnetz.</li>
-        <li><strong>Subnetzmaske:</strong> Legt fest, wie viele Bits für das Netz genutzt werden, z. B. 255.255.255.0.</li>
-        <li><strong>CIDR:</strong> Kurzschreibweise wie <code>/24</code> für 24 Netzbits.</li>
-        <li><strong>Host-Bereich:</strong> Adressen zwischen Netz-ID und Broadcast, die Geräten zugewiesen werden.</li>
-        <li><strong>Broadcast:</strong> Letzte Adresse im Subnetz, sendet an alle Hosts.</li>
-        <li><strong>Gateway:</strong> Router, der das Netz mit anderen Netzen verbindet.</li>
-        <li>Private Netze nutzen Bereiche wie 192.168.x.x oder 10.x.x.x.</li>
+        <li><strong>IP-Adresse:</strong> 32 Bit, z. B. <code>192.168.10.5</code></li>
+        <li><strong>CIDR:</strong> Präfix-Schreibweise <code>/xx</code>, z. B. <code>/26</code></li>
+        <li><strong>Subnetzmaske:</strong> entspricht dem Präfix, z. B. <code>/26 → 255.255.255.192</code></li>
+        <li><strong>Netzwerkadresse:</strong> erste Adresse im Subnetz (nicht nutzbar)</li>
+        <li><strong>Broadcastadresse:</strong> letzte Adresse im Subnetz (nicht nutzbar)</li>
+        <li><strong>Hostbereich:</strong> alle Adressen dazwischen (nutzbar)</li>
       </ul>
-    </section>
+            <div class="alert alert-secondary" role="note">
+        <div class="mb-1"><strong>Formel:</strong> Hosts gesamt = <code>2^(32 − Präfix)</code> → nutzbar = gesamt − 2 (Netz + Broadcast)</div>
+        <div><strong>Blockgröße:</strong> im relevanten Oktett <code>256 − (Maskenwert)</code>. Beispiel <code>/26</code>: Maske <code>...192</code> → Blockgröße <strong>64</strong> → Netze bei <code>...0, 64, 128, 192</code>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="Subnetting Beispiel"><code>Adresse: 172.16.5.10/20
-Netz-ID: 172.16.0.0
-Maske: 255.255.240.0
-Broadcast: 172.16.15.255</code></pre>
-      <p>Mit <code>/20</code> bleiben 12 Bits für Hosts. Das ergibt 4094 nutzbare Adressen im Bereich.</p>
-    </section>
+    <!-- 2) Klassen (alt) + Privatbereiche -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsClasses">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsClassesCollapse" aria-expanded="false" aria-controls="networkBasicsClassesCollapse">
+            <i class="bi bi-archive-fill me-2" aria-hidden="true"></i>
+            2) Klassen (alt, nur Historie)
+          </button>
+        </h2>
+        <div id="networkBasicsClassesCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsClasses" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-sm align-middle mb-2">
+          <thead class="table-light">
+            <tr>
+              <th>Klasse</th>
+              <th>Adressbereich (1. Oktett)</th>
+              <th>Standardmaske</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>A</td><td>0–127</td><td><code>/8</code> (255.0.0.0)</td></tr>
+            <tr><td>B</td><td>128–191</td><td><code>/16</code> (255.255.0.0)</td></tr>
+            <tr><td>C</td><td>192–223</td><td><code>/24</code> (255.255.255.0)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h6">Privatbereiche (RFC1918)</h3>
+      <ul class="mb-1">
+        <li><code>10.0.0.0/8</code></li>
+        <li><code>172.16.0.0/12</code> (172.16–172.31)</li>
+        <li><code>192.168.0.0/16</code></li>
+      </ul>
+      <div class="alert alert-warning py-2 mb-0" role="alert">
+        Mit CIDR darfst du kleiner schneiden, aber nicht „größer“ zusammenfassen. Beispiel: <code>192.168.0.0/15</code> wäre falsch (würde <code>192.169.x.x</code> einschließen → öffentlich).
+      </div>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
+    <!-- 3) VLANs & Subnetze -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsVlans">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsVlansCollapse" aria-expanded="false" aria-controls="networkBasicsVlansCollapse">
+            <i class="bi bi-diagram-2-fill me-2" aria-hidden="true"></i>
+            3) VLANs &amp; Subnetze
+          </button>
+        </h2>
+        <div id="networkBasicsVlansCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsVlans" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <ul>
+        <li>Jedes VLAN = eigenes Subnetz (eigene Netzwerk- und Broadcastadresse).</li>
+        <li>Gateway im VLAN oft erste (<code>.1</code>) oder vorletzte Host-IP.</li>
+      </ul>
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm align-middle">
+          <caption class="mb-0">Beispiel: VLAN <code>192.168.30.0/26</code></caption>
+          <tbody>
+            <tr><th class="w-25">Netz</th><td><code>192.168.30.0</code></td></tr>
+            <tr><th>Hosts</th><td><code>192.168.30.1 – 192.168.30.62</code></td></tr>
+            <tr><th>Broadcast</th><td><code>192.168.30.63</code></td></tr>
+            <tr><th>Gateway (Beispiel)</th><td><code>.1</code> oder <code>.62</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- 4) Sonderfall /31 -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsPointToPoint">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsPointToPointCollapse" aria-expanded="false" aria-controls="networkBasicsPointToPointCollapse">
+            <i class="bi bi-arrows-expand me-2" aria-hidden="true"></i>
+            4) Sonderfall <code>/31</code> (Punkt-zu-Punkt)
+          </button>
+        </h2>
+        <div id="networkBasicsPointToPointCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsPointToPoint" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <ul>
+        <li>Für Links mit genau 2 Geräten (z. B. Router↔Router, VPN).</li>
+        <li>Kein klassisches Netz/Broadcast – beide Adressen nutzbar.</li>
+        <li>Beispiel: <code>192.168.10.224/31</code> → nutzbar: <code>.224</code> und <code>.225</code>.</li>
+      </ul>
+          </div>
+        </div>
+      </div>
+
+    <!-- 5) VLSM-Plan -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsVlsm">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsVlsmCollapse" aria-expanded="false" aria-controls="networkBasicsVlsmCollapse">
+            <i class="bi bi-list-ol me-2" aria-hidden="true"></i>
+            5) VLSM-Plan (dein Beispiel)
+          </button>
+        </h2>
+        <div id="networkBasicsVlsmCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsVlsm" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <p class="mb-2">Start: erstes VLAN-Gateway ist <code>192.168.10.1/26</code> → Netz ist <code>192.168.10.0/26</code>.</p>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-sm align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Nr.</th>
+              <th>Bedarf</th>
+              <th>Netz</th>
+              <th>Host-Bereich</th>
+              <th>Broadcast</th>
+              <th>Gateway-Vorschlag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>gegeben (/26)</td><td><code>192.168.10.0/26</code></td><td><code>.1 – .62</code></td><td><code>.63</code></td><td><code>.1</code> (gesetzt)</td></tr>
+            <tr><td>2</td><td>50 Hosts → /26</td><td><code>192.168.10.64/26</code></td><td><code>.65 – .126</code></td><td><code>.127</code></td><td><code>.65</code></td></tr>
+            <tr><td>3</td><td>25 Hosts → /27</td><td><code>192.168.10.128/27</code></td><td><code>.129 – .158</code></td><td><code>.159</code></td><td><code>.129</code></td></tr>
+            <tr><td>4</td><td>25 Hosts → /27</td><td><code>192.168.10.160/27</code></td><td><code>.161 – .190</code></td><td><code>.191</code></td><td><code>.161</code></td></tr>
+            <tr><td>5</td><td>10 Hosts → /28</td><td><code>192.168.10.192/28</code></td><td><code>.193 – .206</code></td><td><code>.207</code></td><td><code>.193</code></td></tr>
+            <tr><td>6</td><td>10 Hosts → /28</td><td><code>192.168.10.208/28</code></td><td><code>.209 – .222</code></td><td><code>.223</code></td><td><code>.209</code></td></tr>
+            <tr><td>7</td><td>VPN Transfer → /31</td><td><code>192.168.10.224/31</code></td><td><code>.224 – .225</code> (beide nutzbar)</td><td>—</td><td>Endpunkte: <code>.224</code> / <code>.225</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mb-0"><strong>Rest frei:</strong> <code>192.168.10.226 – 192.168.10.255</code></p>
+          </div>
+        </div>
+      </div>
+
+    <!-- 6) IPv6 – kurz & wichtig -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsIPv6">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsIPv6Collapse" aria-expanded="false" aria-controls="networkBasicsIPv6Collapse">
+            <i class="bi bi-infinity me-2" aria-hidden="true"></i>
+            6) IPv6 – kurz &amp; wichtig
+          </button>
+        </h2>
+        <div id="networkBasicsIPv6Collapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsIPv6" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <ul>
+        <li><strong>128 Bit</strong>, hexadezimal, z. B. <code>2001:db8::1</code>; immer CIDR, typisch <code>/64</code> pro LAN (SLAAC).</li>
+        <li><strong>Keine Broadcasts</strong>, stattdessen Multicast.</li>
+      </ul>
+      <h3 class="h6">Adressarten</h3>
+      <ul>
+        <li>Global Unicast (öffentlich)</li>
+        <li>Link-Local <code>fe80::/10</code> (immer da, nur lokal)</li>
+        <li>ULA <code>fc00::/7</code> (wie private IPv4)</li>
+      </ul>
+      <h3 class="h6">Autokonfiguration</h3>
+      <ul>
+        <li>SLAAC baut Host-Teil selbst; früher via MAC (EUI-64) → Datenschutzproblem.</li>
+        <li>Heute: Privacy Extensions (temporär) und stabile, nicht-MAC IDs üblich.</li>
+      </ul>
+      <h3 class="h6">NAT &amp; DHCP</h3>
+      <ul class="mb-0">
+        <li>IPv4: NAT üblich (Adressknappheit), DHCP fast immer.</li>
+        <li>IPv6: kein NAT nötig, SLAAC Standard; DHCPv6 optional (für Optionen/DNS).</li>
+      </ul>
+          </div>
+        </div>
+      </div>
+
+    <!-- 7) IPv4 ↔ IPv6 direkt verglichen -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsCompare">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsCompareCollapse" aria-expanded="false" aria-controls="networkBasicsCompareCollapse">
+            <i class="bi bi-sliders me-2" aria-hidden="true"></i>
+            7) IPv4 ↔ IPv6 direkt verglichen
+          </button>
+        </h2>
+        <div id="networkBasicsCompareCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsCompare" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-sm align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Thema</th>
+              <th>IPv4</th>
+              <th>IPv6</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Länge</td><td>32 Bit</td><td>128 Bit</td></tr>
+            <tr><td>Schreibweise</td><td>Dezimal, 4 Oktette</td><td>Hex, 8 Blöcke, <code>::</code> möglich</td></tr>
+            <tr><td>Präfix</td><td><code>/0…/32</code></td><td><code>/0…/128</code> (LAN i. d. R. <code>/64</code>)</td></tr>
+            <tr><td>Broadcast</td><td>Ja</td><td>Nein (Multicast)</td></tr>
+            <tr><td>Privat</td><td>RFC1918 (10/8, 172.16/12, 192.168/16)</td><td>ULA <code>fc00::/7</code></td></tr>
+            <tr><td>NAT</td><td>Üblich</td><td>Nicht nötig</td></tr>
+            <tr><td>Adressvergabe</td><td>DHCP üblich</td><td>SLAAC üblich, DHCPv6 optional</td></tr>
+            <tr><td>Zwei-Geräte-Link</td><td><code>/30</code> (oder <code>/31</code>)</td><td>oft <code>/127</code> (P2P) oder <code>/64</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- 8) IPv4-CIDR Spickzettel + Merksätze -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsCidr">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsCidrCollapse" aria-expanded="false" aria-controls="networkBasicsCidrCollapse">
+            <i class="bi bi-table me-2" aria-hidden="true"></i>
+            8) IPv4-CIDR Spickzettel
+          </button>
+        </h2>
+        <div id="networkBasicsCidrCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsCidr" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-sm align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Präfix</th>
+              <th>Maske</th>
+              <th>Blockgröße</th>
+              <th>Adressen gesamt</th>
+              <th>Nutzbare Hosts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>/24</td><td>255.255.255.0</td><td>256</td><td>256</td><td>254</td></tr>
+            <tr><td>/25</td><td>255.255.255.128</td><td>128</td><td>128</td><td>126</td></tr>
+            <tr><td>/26</td><td>255.255.255.192</td><td>64</td><td>64</td><td>62</td></tr>
+            <tr><td>/27</td><td>255.255.255.224</td><td>32</td><td>32</td><td>30</td></tr>
+            <tr><td>/28</td><td>255.255.255.240</td><td>16</td><td>16</td><td>14</td></tr>
+            <tr><td>/29</td><td>255.255.255.248</td><td>8</td><td>8</td><td>6</td></tr>
+            <tr><td>/30</td><td>255.255.255.252</td><td>4</td><td>4</td><td>2</td></tr>
+            <tr><td>/31</td><td>255.255.255.254</td><td>2</td><td>2</td><td>2 (Sonderfall)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h6">Merksätze</h3>
+      <ul class="mb-0">
+        <li>Netzadresse = Vielfaches der Blockgröße im relevanten Oktett.</li>
+        <li><code>/31</code> für P2P-Links (beide Adressen nutzbar).</li>
+        <li><code>/64</code> ist in IPv6 der Standard für LANs.</li>
+      </ul>
+          </div>
+        </div>
+      </div>
+
+    <!-- 9) ip addr – Interpretation -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsIpAddr">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsIpAddrCollapse" aria-expanded="false" aria-controls="networkBasicsIpAddrCollapse">
+            <i class="bi bi-terminal me-2" aria-hidden="true"></i>
+            9) Deine <code>ip addr</code>-Ausgabe (Interpretation)
+          </button>
+        </h2>
+        <div id="networkBasicsIpAddrCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsIpAddr" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <ul class="mb-0">
+        <li><code>inet 192.168.0.30/24</code> → deine IPv4; Broadcast ist hier <code>.255</code>.</li>
+        <li>Mehrere <code>inet6</code> → Link-Local <code>fe80::…</code> + mehrere globale (Privacy/Stable).</li>
+        <li><code>ether …</code> → MAC-Adresse; wird i. d. R. nicht mehr direkt in IPv6 (EUI‑64) genutzt.</li>
+      </ul>
+          </div>
+        </div>
+      </div>
+
+    <!-- 10) Mini-Übung -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsExercise">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsExerciseCollapse" aria-expanded="false" aria-controls="networkBasicsExerciseCollapse">
+            <i class="bi bi-question-circle-fill me-2" aria-hidden="true"></i>
+            10) Mini‑Übung
+          </button>
+        </h2>
+        <div id="networkBasicsExerciseCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsExercise" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
+      <p class="mb-2">Welche Netzwerkadresse hat <code>192.168.20.77/26</code>? Tipp: Blockgröße = 64 → Bereiche: <code>.0–.63</code>, <code>.64–.127</code>, …</p>
+      <p class="mb-0">
+        <a class="btn btn-outline-primary btn-sm" data-bs-toggle="collapse" href="#loesung1" role="button" aria-expanded="false" aria-controls="loesung1">
+          Lösung anzeigen
+        </a>
+      </p>
+      <div class="collapse mt-2" id="loesung1">
+        <div class="card card-body">
+          <strong>Netzwerkadresse:</strong> <code>192.168.20.64</code><br>
+          Begründung: <code>.77</code> liegt im Bereich <code>.64–.127</code> → Netz ist <code>.64</code>.
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="networkBasicsNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#networkBasicsNextStepsCollapse" aria-expanded="false" aria-controls="networkBasicsNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="networkBasicsNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="networkBasicsNextSteps" data-bs-parent="#networkBasicsAccordion">
+          <div class="accordion-body">
       <ul>
         <li><a href="2_sicherheit_protokolle.html">Schutz für deine Netze planen</a></li>
         <li><a href="3_datenschutz_datensicherheit.html">Sicherheitsziele zuordnen</a></li>
         <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">REST über sichere Netze betreiben</a></li>
         <li><a href="../2_Datenbanken/2_sql.html">Datenverkehr zur Datenbank verstehen</a></li>
       </ul>
-    </section>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
-

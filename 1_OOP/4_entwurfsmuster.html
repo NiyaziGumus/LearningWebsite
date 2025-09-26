@@ -3,14 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OOP – Entwurfsmuster</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>OOP – Entwurfsmuster: Singleton, Factory Method, Decorator, Fassade, Observer, Strategy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .code-comment { color: #89b39a; }
+    .code-keyword { color: #c678dd; }
+    .code-class { color: #e5c07b; }
+    .code-method { color: #61afef; }
+    .ruby-explainer {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: .375rem;
+    }
+    .uml-plan {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: .375rem;
+      background-color: #fff;
+    }
+  </style>
 </head>
 <body>
   
-
   <main class="container my-4">
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
@@ -20,58 +38,224 @@
       </ol>
     </nav>
 
-    <h1 class="section-title">Factory &amp; Observer verstehen</h1>
+    <h1 class="section-title">Entwurfsmuster: Die Profi-Werkzeuge der OOP</h1>
     <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Entwurfsmuster liefern erprobte Lösungen für typische Probleme. Das Factory-Muster erzeugt Objekte, ohne dass der Aufrufer Details kennen muss. Das Observer-Muster informiert mehrere Empfänger über Änderungen.</p>
+      <p>Entwurfsmuster (Design Patterns) sind erprobte Lösungen für wiederkehrende Probleme in der Softwareentwicklung. Hier findest du kompakte Erklärungen und Beispiele zu zentralen Mustern: <strong>Singleton</strong>, <strong>Factory Method</strong>, <strong>Decorator</strong>, <strong>Fassade</strong>, <strong>Observer</strong> und <strong>Strategy</strong>.</p>
     </section>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>Factory kapselt die Erstellung von Objekten hinter einer Methode.</li>
-        <li>Der Aufrufer fragt nur nach einem Produkt und bekommt die richtige Variante zurück.</li>
-        <li>Observer trennt Sender (Subject) und Empfänger (Observer) locker.</li>
-        <li>Observer melden sich an und werden benachrichtigt, wenn sich der Zustand ändert.</li>
-        <li>UML zeigt beim Factory-Muster meist eine Methode <code>create()</code> im Creator.</li>
-        <li>Beim Observer siehst du eine 1:n-Beziehung vom Subject zu vielen Observern.</li>
-        <li>Muster helfen, Code erweiterbar und testbar zu machen.</li>
-      </ul>
-    </section>
+    <div class="accordion" id="designPatternAccordion">
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <div class="mb-3">
-        <h3 class="h6">Mini-UML (Textform)</h3>
-        <pre class="bg-dark text-white p-3 rounded" aria-label="UML Skizze für Factory und Observer"><code>Factory --&gt; Produkt
-Subject o-- Observer
-Observer : +update()</code></pre>
+      <!-- Singleton -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingZero">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+            <i class="bi bi-shield-lock me-2" aria-hidden="true"></i>
+            Singleton (Einzelstück)
+            <span class="badge bg-secondary ms-2">Erzeugung</span>
+          </button>
+        </h2>
+        <div id="collapseZero" class="accordion-collapse collapse" aria-labelledby="headingZero">
+          <div class="accordion-body">
+            <p><strong>Idee:</strong> Stellt sicher, dass es nur eine einzige Instanz einer Klasse gibt und bietet einen globalen Zugriffspunkt darauf (z. B. für Konfiguration oder Datenbankzugriff).</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Datenbankverbindung – alle Teile des Programms nutzen dieselbe Instanz.</li>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Logger-System – ein gemeinsames Logfile für alle Komponenten.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 class="h6">Java-Snippet</h3>
-        <pre class="bg-dark text-white p-3 rounded" aria-label="Java Beispiel für Factory und Observer"><code>class ProduktFactory {
-  static Produkt create(String typ){ return switch(typ){ case "A" -&gt; new ProduktA(); default -&gt; new ProduktB(); }; }
-}
-interface Beobachter { void update(); }
-class Anzeige implements Beobachter { public void update(){ System.out.println("Neu!"); } }</code></pre>
-      </div>
-      <p>Die Factory erzeugt unterschiedliche Produkte anhand eines Typs. Der Observer reagiert auf Updates ohne direkte Kopplung.</p>
-    </section>
 
-    <section class="mb-4">
+      <!-- Factory Pattern -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="bi bi-tools me-2"></i> Factory Method (Fabrikmethode) <span class="badge bg-secondary ms-2">Erzeugung</span>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+          <div class="accordion-body">
+            <p><strong>Das Problem:</strong> Dein Code muss verschiedene, aber ähnliche Objekte erstellen (z.B. `XmlAnfrage`, `CsvAnfrage`). Du willst aber nicht überall im Code `if`-Abfragen haben, um zu entscheiden, welches Objekt erzeugt werden soll.</p>
+            <p><strong>Die Lösung (Factory):</strong> Du baust eine "Fabrik"-Klasse. Du sagst der Fabrik nur, was du brauchst (z.B. über einen Dateipfad), und sie liefert dir das passende, fertige Objekt zurück. Dein Hauptprogramm muss die konkreten Klassen (`XmlAnfrage`, `CsvAnfrage`) gar nicht mehr kennen.</p>
+            
+            <div class="uml-plan my-3">
+              <h6>Der Plan: IHK-Beispiel (Sommer 2022)</h6>
+              <p>In der Prüfung soll eine `Import`-Klasse als Factory dienen. Sie hat eine Methode `CreateServiceObj`, die je nach Dateipfad das richtige `ImportService`-Objekt (`Manufacturer1` oder `Manufacturer2`) erstellt.</p>
+              
+            </div>
+
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-comment"># Die "Produkte", die erstellt werden sollen</span>
+<span class="code-keyword">class</span> <span class="code-class">Manufacturer1Service</span>; <span class="code-keyword">end</span>
+<span class="code-keyword">class</span> <span class="code-class">Manufacturer2Service</span>; <span class="code-keyword">end</span>
+
+<span class="code-comment"># Das ist die Fabrik-Klasse</span>
+<span class="code-keyword">class</span> <span class="code-class">ImportFactory</span>
+  <span class="code-comment"># Eine Klassenmethode, erkennbar am "self."</span>
+  <span class="code-keyword">def self</span><span class="code-method">.create_service</span>(datapath)
+    <span class="code-keyword">if</span> datapath.end_with?(".ext1")
+      Manufacturer1Service.new
+    <span class="code-keyword">elsif</span> datapath.end_with?(".ext2")
+      Manufacturer2Service.new
+    <span class="code-keyword">else</span>
+      <span class="code-keyword">raise</span> "Unbekanntes Dateiformat!"
+    <span class="code-keyword">end</span>
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-comment"># Anwendung:</span>
+service1 = ImportFactory.create_service("daten.ext1") <span class="code-comment"># -> Erzeugt ein Manufacturer1Service Objekt</span>
+service2 = ImportFactory.create_service("daten.ext2") <span class="code-comment"># -> Erzeugt ein Manufacturer2Service Objekt</span>
+</code></pre>
+            <div class="ruby-explainer">
+              <h6>Wichtige Punkte</h6>
+              <ul>
+                <li><strong>Flexibilität:</strong> Wenn ein dritter Hersteller (`.ext3`) dazukommt, musst du nur die Fabrik-Klasse anpassen. Der Rest deines Programms bleibt unberührt! Das ist der Hauptvorteil.</li>
+                <li><strong>`self.create_service`</strong>: Das `self.` macht `create_service` zu einer <strong>Klassenmethode</strong>. Das bedeutet, du kannst sie direkt auf der Klasse aufrufen (`ImportFactory.create_service(...)`), ohne vorher ein Objekt der Fabrik erstellen zu müssen (`ImportFactory.new`).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Observer Pattern -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="bi bi-newspaper me-2"></i> Observer Pattern (Der Zeitungs-Abonnent) <span class="badge bg-secondary ms-2">Verhalten</span>
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+          <div class="accordion-body">
+            <p><strong>Idee:</strong> Definiert eine 1:n-Beziehung. Wenn sich der Zustand eines Objekts ändert, werden alle abhängigen Objekte automatisch benachrichtigt.</p>
+            <ul>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>YouTube-Abo – ein Kanal postet, alle Abonnenten werden informiert.</li>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>GUI-Events – mehrere Listener reagieren auf einen Klick (Popup, Sound, Logging).</li>
+            </ul>
+            <p><strong>Das Problem:</strong> Ein Objekt (das "Subjekt") ändert seinen Zustand (z.B. ein Kursplatz wird frei). Mehrere andere Objekte (die "Observer" oder Beobachter) müssen darüber informiert werden, ohne dass das Subjekt sie alle direkt kennen und ansprechen muss.</p>
+            <p><strong>Die Lösung (Observer):</strong> Die Beobachter "abonnieren" das Subjekt. Wenn sich beim Subjekt etwas ändert, geht es einfach seine Abonnentenliste durch und ruft bei jedem eine `update`-Methode auf. Subjekt und Beobachter sind nur lose gekoppelt.</p>
+
+            <div class="uml-plan my-3">
+              <h6>Der Plan: IHK-Beispiel (Sommer 2023)</h6>
+              <p>In der Prüfung wollen `Teilnehmer` (Observer) auf einer Warteliste informiert werden, wenn bei einer `Fortbildung` (Subjekt) ein Platz frei wird.</p>
+              
+            </div>
+
+            <h6>Die Umsetzung in Ruby</h6>
+            <pre><code class="language-ruby"><span class="code-comment"># Ein Modul, das jede Klasse zum "Subjekt" machen kann</span>
+<span class="code-keyword">module</span> <span class="code-class">Observable</span>
+  <span class="code-keyword">def</span> <span class="code-method">initialize</span>
+    <span class="code-keyword">@observers</span> = []
+  <span class="code-keyword">end</span>
+
+  <span class="code-keyword">def</span> <span class="code-method">add_observer</span>(observer)
+    <span class="code-keyword">@observers</span> << observer
+  <span class="code-keyword">end</span>
+
+  <span class="code-keyword">def</span> <span class="code-method">notify_observers</span>
+    <span class="code-keyword">@observers</span>.each { |observer| observer.update(self) }
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Fortbildung</span>
+  <span class="code-keyword">include</span> Observable <span class="code-comment"># Mischt die Observable-Fähigkeiten hier rein!</span>
+
+  <span class="code-keyword">def</span> <span class="code-method">platz_wird_frei</span>
+    puts "Ein Platz in der Fortbildung ist frei geworden!"
+    notify_observers <span class="code-comment"># Informiere alle Abonnenten</span>
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-keyword">class</span> <span class="code-class">Teilnehmer</span>
+  <span class="code-keyword">def</span> <span class="code-method">update</span>(fortbildung)
+    puts "Teilnehmer: Super, ich habe die Info über den freien Platz erhalten!"
+  <span class="code-keyword">end</span>
+<span class="code-keyword">end</span>
+
+<span class="code-comment"># Anwendung:</span>
+kurs = Fortbildung.new
+abonnent1 = Teilnehmer.new
+
+kurs.add_observer(abonnent1) <span class="code-comment"># Abonnent1 registriert sich.</span>
+kurs.platz_wird_frei         <span class="code-comment"># löst die Benachrichtigung aus.</span>
+</code></pre>
+            <div class="ruby-explainer">
+              <h6>Wichtige Punkte</h6>
+              <ul>
+                <li><strong>`module Observable`</strong>: In Ruby ist es üblich, solche wiederverwendbaren Verhaltensweisen in ein `Modul` zu packen.</li>
+                <li><strong>`include Observable`</strong>: Mit `include` holt sich die `Fortbildung`-Klasse alle Methoden aus dem `Observable`-Modul. Das ist flexibler als Vererbung, weil eine Klasse mehrere Module inkludieren kann.</li>
+                <li><strong>Lose Kopplung:</strong> Die `Fortbildung` muss nicht wissen, dass es eine `Teilnehmer`-Klasse gibt. Sie weiß nur, dass ihre Beobachter eine `update`-Methode haben. Man könnte auch eine `Verwaltung`-Klasse als Beobachter hinzufügen, ohne die `Fortbildung`-Klasse zu ändern.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorator -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="bi bi-layers me-2" aria-hidden="true"></i> Decorator (Ausstatter) <span class="badge bg-secondary ms-2">Struktur</span>
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+          <div class="accordion-body">
+            <p><strong>Idee:</strong> Fügt einem bestehenden Objekt dynamisch neue Funktionen hinzu, indem es schichtweise dekoriert wird. Jede Schicht bringt zusätzliche Fähigkeiten, ohne die Basisklasse zu ändern.</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Kaffeeautomat – Basis: Kaffee → Extras: Milch, Zucker, Sahne.</li>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>E-Mail – Basis: Text → Extras: Verschlüsselung, Signatur, Kompression.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fassade / Facade -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="bi bi-columns me-2" aria-hidden="true"></i> Fassade (Facade) <span class="badge bg-secondary ms-2">Struktur</span>
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+          <div class="accordion-body">
+            <p><strong>Idee:</strong> Versteckt die Komplexität eines Systems hinter einer einfachen Schnittstelle. Nutzer interagieren mit einer zentralen Fassade, nicht mit vielen Details.</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Hotel-Rezeption – eine Anlaufstelle statt mit Küche, Technik, Reinigung einzeln zu reden.</li>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Banking-App – einfache Oberfläche, dahinter laufen viele Systeme (Konto, Depot, Kredite).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strategy -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            <i class="bi bi-compass me-2" aria-hidden="true"></i> Strategy (Strategie) <span class="badge bg-secondary ms-2">Verhalten</span>
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+          <div class="accordion-body">
+            <p><strong>Idee:</strong> Definiert eine Familie austauschbarer Algorithmen. Das Programm kann zur Laufzeit entscheiden, welche Strategie verwendet wird.</p>
+            <ul class="mb-0">
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Navigation – Route wählen: Autobahn, Landstraße, Zug.</li>
+              <li><i class="bi bi-check-circle text-success me-1" aria-hidden="true"></i>Online-Shop-Zahlung – Kunde wählt: Kreditkarte, PayPal, Sofortüberweisung.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="mt-5">
       <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_uml_modellierung.html">Diagramme für Beziehungen üben</a></li>
-        <li><a href="3_implementierung.html">Factory im Java-Code vervollständigen</a></li>
-        <li><a href="2_prinzipien_oop.html">Prinzipien für Muster wiederholen</a></li>
-        <li><a href="../5_BWL_Projektmanagement/2_projektmanagement.html">Agile Observer im Projekt nutzen</a></li>
-      </ul>
+      <div class="list-group">
+        <a href="3_implementierung.html" class="list-group-item list-group-item-action"><strong>Zurück zur Implementierung</strong> <i class="bi bi-arrow-right-circle"></i><br>Schaue dir nochmal an, wie man Klassen und Vererbung umsetzt.</a>
+        <a href="../2_Datenbanken/index.html" class="list-group-item list-group-item-action"><strong>Nächstes Thema: Datenbanken</strong><br>Wechsle zum nächsten großen Themenblock.</a>
+      </div>
     </section>
   </main>
 
-  
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>

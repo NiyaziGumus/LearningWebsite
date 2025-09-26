@@ -21,43 +21,279 @@
     </nav>
 
     <h1 class="section-title">HTML-Grundlagen</h1>
-    <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>HTML beschreibt die Struktur einer Webseite. Du ordnest Inhalte in Überschriften, Absätze oder Listen. Formulare erfassen Daten von Nutzenden mit Feldern und Buttons.</p>
-    </section>
+    <div class="accordion" id="htmlBasicsAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="htmlBasicsIntro">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#htmlBasicsIntroCollapse" aria-expanded="true" aria-controls="htmlBasicsIntroCollapse">
+            <i class="bi bi-filetype-html me-2" aria-hidden="true"></i>
+            Worum geht's?
+          </button>
+        </h2>
+        <div id="htmlBasicsIntroCollapse" class="accordion-collapse collapse show" aria-labelledby="htmlBasicsIntro" data-bs-parent="#htmlBasicsAccordion">
+          <div class="accordion-body">
+            <p>HTML beschreibt die Struktur einer Webseite. Du ordnest Inhalte in Überschriften, Absätze oder Listen. Formulare erfassen Daten von Nutzenden mit Feldern und Buttons.</p>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li>Jede HTML-Seite startet mit <code>&lt;!DOCTYPE html&gt;</code> und einem <code>&lt;html&gt;</code>-Element.</li>
-        <li>Der <code>&lt;head&gt;</code> enthält Meta-Daten, Titel und CSS-Verlinkungen.</li>
-        <li>Der <code>&lt;body&gt;</code> enthält sichtbare Inhalte.</li>
-        <li>Formulare nutzen <code>&lt;form&gt;</code> mit Eingabefeldern wie <code>&lt;input type="email"&gt;</code>.</li>
-        <li><code>&lt;label&gt;</code> verbindet Text mit Eingaben über das <code>for</code>-Attribut.</li>
-        <li><code>&lt;select&gt;</code> und <code>&lt;textarea&gt;</code> geben Wahl- und Freitextfelder.</li>
-        <li>Semantische Tags wie <code>&lt;header&gt;</code> oder <code>&lt;nav&gt;</code> verbessern Zugänglichkeit.</li>
-      </ul>
-    </section>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="htmlBasicsKeyFacts">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#htmlBasicsKeyFactsCollapse" aria-expanded="false" aria-controls="htmlBasicsKeyFactsCollapse">
+            <i class="bi bi-lightbulb-fill me-2" aria-hidden="true"></i>
+            Das Wichtigste in Kürze
+          </button>
+        </h2>
+        <div id="htmlBasicsKeyFactsCollapse" class="accordion-collapse collapse" aria-labelledby="htmlBasicsKeyFacts" data-bs-parent="#htmlBasicsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li>Jede HTML-Seite startet mit <code>&lt;!DOCTYPE html&gt;</code> und einem <code>&lt;html&gt;</code>-Element.</li>
+              <li>Der <code>&lt;head&gt;</code> enthält Meta-Daten, Titel und CSS-Verlinkungen.</li>
+              <li>Der <code>&lt;body&gt;</code> enthält sichtbare Inhalte.</li>
+              <li>Formulare nutzen <code>&lt;form&gt;</code> mit Eingabefeldern wie <code>&lt;input type="email"&gt;</code>.</li>
+              <li><code>&lt;label&gt;</code> verbindet Text mit Eingaben über das <code>for</code>-Attribut.</li>
+              <li><code>&lt;select&gt;</code> und <code>&lt;textarea&gt;</code> geben Wahl- und Freitextfelder.</li>
+              <li>Semantische Tags wie <code>&lt;header&gt;</code> oder <code>&lt;nav&gt;</code> verbessern Zugänglichkeit.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="HTML Formular"><code>&lt;form&gt;
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="htmlBasicsExample">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#htmlBasicsExampleCollapse" aria-expanded="false" aria-controls="htmlBasicsExampleCollapse">
+            <i class="bi bi-code-slash me-2" aria-hidden="true"></i>
+            Beispielformular
+          </button>
+        </h2>
+        <div id="htmlBasicsExampleCollapse" class="accordion-collapse collapse" aria-labelledby="htmlBasicsExample" data-bs-parent="#htmlBasicsAccordion">
+          <div class="accordion-body">
+            <pre class="bg-dark text-white p-3 rounded" aria-label="HTML Formular"><code>&lt;form&gt;
   &lt;label for="mail"&gt;E-Mail&lt;/label&gt;
   &lt;input id="mail" type="email" required&gt;
   &lt;button type="submit"&gt;Senden&lt;/button&gt;
 &lt;/form&gt;</code></pre>
-      <p>Das Label weist auf das Eingabefeld hin. Das <code>required</code>-Attribut sorgt für eine Pflichtangabe.</p>
-    </section>
+            <p>Das Label weist auf das Eingabefeld hin. Das <code>required</code>-Attribut sorgt für eine Pflichtangabe.</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="htmlBasicsNextSteps">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#htmlBasicsNextStepsCollapse" aria-expanded="false" aria-controls="htmlBasicsNextStepsCollapse">
+            <i class="bi bi-mortarboard-fill me-2" aria-hidden="true"></i>
+            Weiter lernen
+          </button>
+        </h2>
+        <div id="htmlBasicsNextStepsCollapse" class="accordion-collapse collapse" aria-labelledby="htmlBasicsNextSteps" data-bs-parent="#htmlBasicsAccordion">
+          <div class="accordion-body">
+            <ul>
+              <li><a href="2_css.html">Formulare mit CSS gestalten</a></li>
+              <li><a href="3_web_konzepte_sicherheit.html">Formular-Daten sicher verarbeiten</a></li>
+              <li><a href="../2_Datenbanken/2_sql.html">Formular-Daten in Tabellen speichern</a></li>
+              <li><a href="../1_OOP/3_implementierung.html">Serverlogik für Formulare planen</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="htmlBasicsCheatsheet">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#htmlBasicsCheatsheetCollapse" aria-expanded="false" aria-controls="htmlBasicsCheatsheetCollapse">
+            <i class="bi bi-list-check me-2" aria-hidden="true"></i>
+            HTML Grundgerüst – kurz &amp; prüfungsfit
+          </button>
+        </h2>
+        <div id="htmlBasicsCheatsheetCollapse" class="accordion-collapse collapse" aria-labelledby="htmlBasicsCheatsheet" data-bs-parent="#htmlBasicsAccordion">
+          <div class="accordion-body">
     <section class="mb-4">
-      <h2 class="h5">Weiter lernen</h2>
+      <h2 class="h4">HTML Grundgerüst – kurz &amp; prüfungsfit</h2>
+
+      <h3 class="h5 mt-3">1) Minimal (passt fast immer)</h3>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="HTML Minimal"><code>&lt;!doctype html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Seitentitel&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Inhalt --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p><strong>Erklärung:</strong></p>
       <ul>
-        <li><a href="2_css.html">Formulare mit CSS gestalten</a></li>
-        <li><a href="3_web_konzepte_sicherheit.html">Formular-Daten sicher verarbeiten</a></li>
-        <li><a href="../2_Datenbanken/2_sql.html">Formular-Daten in Tabellen speichern</a></li>
-        <li><a href="../1_OOP/3_implementierung.html">Serverlogik für Formulare planen</a></li>
+        <li><code>&lt;!doctype html&gt;</code> = HTML5 aktivieren.</li>
+        <li><code>lang="de"</code> = Seitensprache Deutsch (Screenreader/SEO).</li>
+        <li><code>meta charset</code> = Zeichensatz UTF‑8 (Umlaute korrekt).</li>
+        <li><code>title</code> = Titel im Browser‑Tab.</li>
+      </ul>
+
+      <h3 class="h5 mt-4">2) Empfohlen (responsive + Dateien einbinden)</h3>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="HTML Empfohlen"><code>&lt;!doctype html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Seitentitel&lt;/title&gt;
+  &lt;link rel="stylesheet" href="assets/css/main.css"&gt;
+  &lt;script src="assets/js/main.js" defer&gt;&lt;/script&gt;
+  &lt;link rel="icon" href="/favicon.ico"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;Header&lt;/header&gt;
+  &lt;main&gt;Hauptinhalt&lt;/main&gt;
+  &lt;footer&gt;Footer&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <p><strong>Erklärung (kurz):</strong></p>
+      <ul>
+        <li><code>viewport</code> = Skaliert auf Handy/Tablet (responsive).</li>
+        <li><code>link rel="stylesheet"</code> = CSS laden.</li>
+        <li><code>script defer</code> = JS laden, aber erst nach dem HTML ausführen.</li>
+        <li><code>favicon</code> = kleines Icon im Tab.</li>
+        <li><code>header/main/footer</code> = semantische Bereiche (Struktur &amp; Barrierefreiheit).</li>
       </ul>
     </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mb-4">
+      <h2 class="h4">HTML‑Formulare</h2>
+
+      <h3 class="h5 mt-3">1) Was ist ein Formular?</h3>
+      <p>Ein Formular sammelt Nutzereingaben und schickt sie an eine Ziel‑Adresse.</p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Formular Grundgerüst"><code>&lt;form action="/absenden" method="post"&gt;
+  ... Eingabefelder ...
+  &lt;input type="submit" value="Absenden"&gt;
+&lt;/form&gt;</code></pre>
+
+      <h3 class="h5 mt-4">2) Wichtige &lt;form&gt;-Attribute</h3>
+      <ul>
+        <li><strong>action</strong>: Wohin werden die Daten gesendet? (z. B. <code>/absenden</code>, <code>verarbeite.php</code>)</li>
+        <li><strong>method</strong>: Wie werden Daten gesendet?
+          <br>• <code>get</code> → Daten in der URL, z. B. <code>/absenden?name=Ali</code>
+          <br>• <code>post</code> → Daten im Request‑Body (nicht in der URL)
+        </li>
+        <li><strong>enctype</strong>: Datenformat (für Datei‑Upload <strong><code>multipart/form-data</code></strong>)</li>
+      </ul>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Form Beispiele"><code>&lt;form action="/suche" method="get"&gt; ... &lt;/form&gt;
+&lt;form action="/upload" method="post" enctype="multipart/form-data"&gt; ... &lt;/form&gt;</code></pre>
+
+      <h3 class="h5 mt-4">3) Beschriftungen mit &lt;label&gt;</h3>
+      <ul>
+        <li>Zweck: Klick auf den Text fokussiert das Feld / setzt Häkchen.</li>
+        <li>Wichtigstes Attribut: <strong>for</strong> → zeigt auf die <strong>id</strong> des Eingabefelds.</li>
+      </ul>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Label Beispiel"><code>&lt;label for="email"&gt;E‑Mail:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;</code></pre>
+      <p>(Alternativ darf das <code>&lt;input&gt;</code> auch im <code>&lt;label&gt;</code> stehen.)</p>
+      <p><strong>Nützliche globale Attribute am &lt;label&gt;:</strong> <code>id</code>, <code>class</code>, <code>title</code>, <code>style</code>.</p>
+
+      <h3 class="h5 mt-4">4) Wichtige Eingabe‑Tags</h3>
+      <ul>
+        <li><code>&lt;input&gt;</code> – viele Typen (siehe unten)</li>
+        <li><code>&lt;textarea&gt;</code> – mehrzeiliger Text</li>
+        <li><code>&lt;select&gt;</code> + <code>&lt;option&gt;</code> – Dropdown</li>
+        <li><code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> – Felder logisch gruppieren</li>
+      </ul>
+      <p><strong>Häufige &lt;input type&gt;-Werte:</strong> <code>text</code>, <code>password</code>, <code>number</code>, <code>email</code>, <code>date</code>, <code>radio</code>, <code>checkbox</code>, <code>file</code>, <code>hidden</code>, <code>submit</code>, <code>reset</code>, <code>button</code></p>
+
+      <h3 class="h5 mt-4">5) Radio‑Buttons (genau eine Auswahl)</h3>
+      <p><strong>Regel:</strong> Alle Radios, die zusammengehören, müssen denselben <code>name</code> haben.</p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Radio Beispiel"><code>&lt;p&gt;Lieferoption:&lt;/p&gt;
+&lt;label&gt;&lt;input type="radio" name="lieferung" value="schnell"&gt; Schnell&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="lieferung" value="guenstig" checked&gt; Günstig&lt;/label&gt;</code></pre>
+      <ul>
+        <li>Beim Absenden kommt z. B. <code>lieferung=guenstig</code>.</li>
+        <li><code>checked</code> setzt eine Vorauswahl.</li>
+      </ul>
+
+      <h3 class="h5 mt-4">6) Checkboxen (mehrere Auswahlen möglich)</h3>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Checkbox Beispiel"><code>&lt;p&gt;Extras:&lt;/p&gt;
+&lt;label&gt;&lt;input type="checkbox" name="extras" value="versicherung"&gt; Versicherung&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="extras" value="express"&gt; Expressversand&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="extras" value="geschenk"&gt; Geschenk&lt;/label&gt;</code></pre>
+      <p>Mehrere Haken sind erlaubt. Beim Senden erscheinen mehrere Werte mit demselben Namen (z. B. <code>extras=versicherung&amp;extras=express</code>).</p>
+
+      <h3 class="h5 mt-4">7) Dropdowns (&lt;select&gt;) – eine oder mehrere Auswahlen</h3>
+      <p><strong>Einzelauswahl</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Select Einfach"><code>&lt;select name="land"&gt;
+  &lt;option value="de"&gt;Deutschland&lt;/option&gt;
+  &lt;option value="tr"&gt;Türkei&lt;/option&gt;
+  &lt;option value="ch"&gt;Schweiz&lt;/option&gt;
+  &lt;option value="at"&gt;Österreich&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+      <p><strong>Mehrfachauswahl</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Select Mehrfach"><code>&lt;select name="laender" multiple size="4"&gt;
+  &lt;option value="de"&gt;Deutschland&lt;/option&gt;
+  &lt;option value="tr"&gt;Türkei&lt;/option&gt;
+  &lt;option value="ch"&gt;Schweiz&lt;/option&gt;
+  &lt;option value="at"&gt;Österreich&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+      <p><code>multiple</code> erlaubt mehrere Markierungen (Strg/Cmd‑Klick). <code>size</code> zeigt mehrere Zeilen an.</p>
+
+      <h3 class="h5 mt-4">8) Textarea (mehrzeiliges Feld)</h3>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Textarea Beispiel"><code>&lt;label for="nachricht"&gt;Nachricht:&lt;/label&gt;
+&lt;textarea id="nachricht" name="nachricht" rows="4" cols="40" placeholder="Ihr Text..."&gt;&lt;/textarea&gt;</code></pre>
+      <p>Wichtige Attribute: <code>name</code>, <code>id</code>, <code>rows</code>, <code>cols</code>, <code>placeholder</code>.</p>
+
+      <h3 class="h5 mt-4">9) Gruppen mit &lt;fieldset&gt; &amp; &lt;legend&gt;</h3>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Fieldset Beispiel"><code>&lt;fieldset&gt;
+  &lt;legend&gt;Adresse&lt;/legend&gt;
+  &lt;label for="plz"&gt;PLZ:&lt;/label&gt;
+  &lt;input id="plz" name="plz" type="text"&gt;
+&lt;/fieldset&gt;</code></pre>
+      <p>Semantisch korrekt und barriereärmer als nur Überschrift‑Text.</p>
+
+      <h3 class="h5 mt-4">10) GET vs. POST – wann was?</h3>
+      <ul>
+        <li><strong>GET</strong>: Lesen/Suchen/Filtern; Lese‑Operationen; URL teilbar.</li>
+        <li><strong>POST</strong>: Anlegen/Ändern; Passwörter/Formulare; Datei‑Upload.</li>
+      </ul>
+      <p><strong>Beispiel‑Darstellung</strong></p>
+      <ul>
+        <li>GET sendet: <code>/absenden?username=Ali&amp;alter=20</code></li>
+        <li>POST sendet im Body (nicht sichtbar in der URL)</li>
+      </ul>
+
+      <h3 class="h5 mt-4">11) Häufige Fehler in Prüfungen</h3>
+      <ul>
+        <li><code>name</code> vergessen → Wert kommt nicht an.</li>
+        <li>Radio‑Buttons mit verschiedenen <code>name</code>-Werten → mehrere gleichzeitig wählbar (falsch).</li>
+        <li>Datei‑Upload ohne <code>enctype="multipart/form-data"</code>.</li>
+        <li><code>&lt;label for="..."&gt;</code> zeigt nicht auf die korrekte <code>id</code>.</li>
+      </ul>
+
+      <h3 class="h5 mt-4">12) Mini‑Vorlagen (zum Abschreiben)</h3>
+      <p><strong>Form‑Skelett</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Form Skelett"><code>&lt;form action="/absenden" method="post"&gt;
+  ...
+  &lt;input type="submit" value="Absenden"&gt;
+&lt;/form&gt;</code></pre>
+
+      <p><strong>Radio‑Gruppe</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Radio Vorlage"><code>&lt;label&gt;&lt;input type="radio" name="x" value="a" checked&gt; A&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="x" value="b"&gt; B&lt;/label&gt;</code></pre>
+
+      <p><strong>Checkboxen</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Checkbox Vorlage"><code>&lt;label&gt;&lt;input type="checkbox" name="opt" value="1"&gt; Opt 1&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="opt" value="2"&gt; Opt 2&lt;/label&gt;</code></pre>
+
+      <p><strong>Select (einfach)</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Select Vorlage"><code>&lt;select name="auswahl"&gt;
+  &lt;option value="1"&gt;Eins&lt;/option&gt;
+  &lt;option value="2"&gt;Zwei&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+      <p><strong>Textarea</strong></p>
+      <pre class="bg-dark text-white p-3 rounded" aria-label="Textarea Vorlage"><code>&lt;label for="t"&gt;Text:&lt;/label&gt;
+&lt;textarea id="t" name="t" rows="4" cols="40"&gt;&lt;/textarea&gt;</code></pre>
+    </section>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
   

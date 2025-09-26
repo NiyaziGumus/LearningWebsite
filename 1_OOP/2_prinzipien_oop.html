@@ -3,63 +3,226 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OOP – Prinzipien</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>OOP – Die 4 Grundprinzipien für die IHK-Prüfung</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    .code-comment {
+        color: #6c757d;
+    }
+    .alert-warning {
+        background-color: #fff3cd;
+        border-color: #ffe69c;
+    }
+    .alert-success {
+        background-color: #d1e7dd;
+        border-color: #badbcc;
+    }
+  </style>
 </head>
 <body>
   
-
   <main class="container my-4">
     <nav aria-label="Breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="../index.html">Startseite</a></li>
         <li class="breadcrumb-item"><a href="index.html">OOP</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Prinzipien</li>
+        <li class="breadcrumb-item active" aria-current="page">Die 4 Grundprinzipien</li>
       </ol>
     </nav>
 
-    <h1 class="section-title">Grundprinzipien der OOP</h1>
+    <h1 class="section-title">Die 4 Grundprinzipien der OOP</h1>
     <section class="mb-4">
-      <h2 class="h5">Worum geht's?</h2>
-      <p>Die vier Grundprinzipien helfen dir, Programme sauber zu strukturieren. Wenn du sie anwendest, bleibt dein Code verständlich und leicht erweiterbar. Du erkennst schnell, wo welche Funktion hingehört.</p>
+      <p>Die vier Grundprinzipien sind die "goldenen Regeln" der Objektorientierten Programmierung. Sie helfen dir, deinen Code sicher, flexibel und wiederverwendbar zu machen. In der IHK-Prüfung musst du nicht nur wissen, wie sie heißen, sondern vor allem, <strong>warum</strong> es sie gibt und wie sie im Code aussehen.</p>
     </section>
 
-    <section class="mb-4">
-      <h2 class="h5">Das Wichtigste in Kürze</h2>
-      <ul>
-        <li><strong>Abstraktion:</strong> Du zeigst nur, was wichtig ist, und versteckst Details.</li>
-        <li><strong>Kapselung:</strong> Private Felder schützen Daten; Getter/Setter geben kontrollierten Zugriff.</li>
-        <li><strong>Vererbung:</strong> Eine Unterklasse übernimmt Eigenschaften der Oberklasse und kann erweitern.</li>
-        <li><strong>Polymorphie:</strong> Gleiche Methode, verschiedene Umsetzung – nützlich für Austauschbarkeit.</li>
-        <li><code>public</code>, <code>private</code>, <code>protected</code> steuern Sichtbarkeit und Zugriff.</li>
-        <li><code>override</code> kennzeichnet eine Methode, die Verhalten in der Unterklasse anpasst.</li>
-        <li>Schnittstellen beschreiben nur Methoden, aber keine Felder.</li>
-      </ul>
-    </section>
+    <div class="accordion" id="oopPrinciplesAccordion">
 
-    <section class="mb-4">
-      <h2 class="h5">Beispiel</h2>
-      <pre class="bg-dark text-white p-3 rounded" aria-label="Java Beispiel für Polymorphie"><code>class Tier { public void geraeusch(){ System.out.println("..." ); } }
-class Hund extends Tier { @Override public void geraeusch(){ System.out.println("Wuff"); } }</code></pre>
-      <p>Die Methode <code>geraeusch()</code> wird in der Unterklasse überschrieben und liefert ein eigenes Verhalten.</p>
-    </section>
+      <!-- 1. Kapselung -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="bi bi-shield-lock-fill me-2"></i><strong>1. Kapselung (Der Tresor)</strong>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#oopPrinciplesAccordion">
+          <div class="accordion-body">
+            <p><strong>Die Idee:</strong> Daten (Attribute) und die Methoden, die darauf arbeiten, werden zu einer Einheit (Klasse) gebündelt. Die Daten werden als <code>private</code> markiert, sodass niemand von außen direkt darauf zugreifen und sie versehentlich verändern kann. Zugriff ist nur über kontrollierte öffentliche Methoden (Getter/Setter) erlaubt.</p>
+            <p><strong>Prüfungsrelevanz:</strong> Das ist die Grundlage für Datenintegrität. Du musst erklären können, warum ein Attribut <code>private</code> (im UML: <code>-</code>) sein sollte.</p>
+            <h6>IHK-Beispiel (W24/25):</h6>
+            <p>In der Klasse `Messreihe` gibt es das Attribut `anzahlFehler`. Dieser Wert darf nicht einfach von außen gesetzt werden. Er soll das Ergebnis der internen `bereinigeMesswertliste()`-Methode sein.</p>
+            <pre><code>class Messreihe
+  <span class="code-comment"># Macht @anzahl_fehler von außen lesbar (Getter), aber nicht schreibbar (kein Setter).</span>
+  attr_reader :anzahl_fehler
 
-    <section class="mb-4">
+  def initialize(messwerte)
+    @messwertliste = messwerte
+    <span class="code-comment"># Der private Wert @anzahl_fehler wird hier intern und kontrolliert gesetzt!</span>
+    @anzahl_fehler = bereinige_messwertliste
+  end
+
+  private <span class="code-comment"># Alles was jetzt kommt, ist von außen nicht sichtbar.</span>
+
+  def bereinige_messwertliste
+    fehler_gefunden = 0
+    # ... Logik zum Zählen der Fehler ...
+    return fehler_gefunden
+  end
+end
+
+messreihe = Messreihe.new([...])
+puts messreihe.anzahl_fehler <span class="code-comment"># -> OK (Lesen erlaubt)</span>
+<span class="code-comment"># messreihe.anzahl_fehler = 5 # -> FEHLER! (Schreiben verboten)</span>
+</code></pre>
+            <div class="alert alert-warning mt-3">
+              <h6 class="alert-heading">Übungsaufgabe im IHK-Stil</h6>
+              <p><strong>Aufgabe:</strong> Erläutern Sie, warum in einer Klasse `Konto` das Attribut `kontostand` `private` sein sollte und wie eine Einzahlung trotzdem sicher umgesetzt werden kann.</p>
+              <hr>
+              <p class="mb-0"><strong>Antwort-Ansatz:</strong> `kontostand` muss `private` sein, damit niemand den Wert direkt manipulieren kann. Eine öffentliche Methode `einzahlen(betrag)` sorgt dafür, dass nur positive Beträge addiert werden und die Änderung protokolliert wird. So bleibt die Datenintegrität gewahrt.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Vererbung -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="bi bi-diagram-3-fill me-2"></i><strong>2. Vererbung (Die Familienähnlichkeit)</strong>
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#oopPrinciplesAccordion">
+          <div class="accordion-body">
+            <p><strong>Die Idee:</strong> Du erstellst eine allgemeine Klasse (Oberklasse) und leitest davon spezialisierte Klassen (Unterklassen) ab. Die Unterklassen "erben" alle Attribute und Methoden der Oberklasse und können eigene hinzufügen oder bestehende anpassen. Das spart Code und schafft logische Hierarchien ("Ist-ein"-Beziehung).</p>
+            <p><strong>Prüfungsrelevanz:</strong> Code-Wiederverwendung ist ein zentrales Thema. Du musst Vererbung im UML (Pfeil mit leerer Spitze) erkennen und im Code umsetzen können.</p>
+            <h6>IHK-Beispiel (W23/24):</h6>
+            <p>Die Klassen `Kind` und `Erzieherin` sind beides spezielle Arten von `Person` und erben von dieser Klasse den Nachnamen.</p>
+            <pre><code><span class="code-comment"># Die allgemeine Oberklasse</span>
+class Person
+  attr_accessor :nachname
+
+  def initialize(nachname)
+    @nachname = nachname
+  end
+end
+
+<span class="code-comment"># Die spezialisierte Unterklasse. "< Kind < Person" bedeutet "Kind erbt von Person".</span>
+class Kind < Person
+  attr_accessor :note_vorschultest
+
+  def initialize(nachname, note)
+    <span class="code-comment"># `super(nachname)` ruft den Konstruktor der `Person`-Klasse auf,</span>
+    <span class="code-comment"># damit der Name dort initialisiert wird.</span>
+    super(nachname)
+    @note_vorschultest = note
+  end
+end
+
+kind = Kind.new("Müller", 2.0)
+puts kind.nachname <span class="code-comment"># -> "Müller" (Eigenschaft geerbt von Person)</span>
+</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Polymorphie -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="bi bi-dice-5-fill me-2"></i><strong>3. Polymorphie (Die Vielgestaltigkeit)</strong>
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#oopPrinciplesAccordion">
+          <div class="accordion-body">
+            <p><strong>Die Idee:</strong> "Vielgestaltigkeit" bedeutet, dass Objekte unterschiedlicher Klassen auf denselben Methodenaufruf unterschiedlich reagieren können. Eine Liste kann z.B. verschiedene `Person`-Objekte (`Kind`, `Erzieherin`) enthalten, und wenn du bei jedem `istGut()` aufrufst, führt jedes Objekt seine eigene, spezielle Logik aus.</p>
+            <p><strong>Prüfungsrelevanz:</strong> Dies ist die Grundlage für flexible und erweiterbare Systeme. Du musst das Überschreiben von Methoden (`override`) erklären können.</p>
+            <h6>IHK-Beispiel (W23/24):</h6>
+            <p>Die Methode `istGut()` liefert bei einem `Kind` `true` zurück, wenn die Note gut ist. Bei einer `Erzieherin` liefert sie `true`, wenn sie genug Berufsjahre hat. Der Aufruf ist identisch, das Ergebnis ist unterschiedlich.</p>
+            <pre><code><span class="code-comment"># Wir brauchen eine gemeinsame Basisklasse</span>
+class Person
+  def ist_gut?
+    # Diese Methode muss von Unterklassen überschrieben werden
+  end
+end
+
+class Kind < Person
+  def initialize(note) @note = note end
+  def ist_gut?
+    @note < 2.5 <span class="code-comment"># Logik für Kind</span>
+  end
+end
+
+class Erzieherin < Person
+  def initialize(jahre) @jahre = jahre end
+  def ist_gut?
+    @jahre > 7 <span class="code-comment"># Logik für Erzieherin</span>
+  end
+end
+
+<span class="code-comment"># Eine Liste mit verschiedenen Objekten, die alle "Personen" sind.</span>
+personen = [Kind.new(1.8), Erzieherin.new(10), Kind.new(3.2)]
+
+<span class="code-comment"># Wir rufen bei allen die gleiche Methode auf...</span>
+personen.each do |person|
+  <span class="code-comment"># ...und jedes Objekt führt seine eigene Implementierung aus!</span>
+  puts "#{person.class} ist gut? #{person.ist_gut?}"
+end
+</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Abstraktion -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="bi bi-puzzle-fill me-2"></i><strong>4. Abstraktion (Das Wesentliche)</strong>
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#oopPrinciplesAccordion">
+          <div class="accordion-body">
+            <p><strong>Die Idee:</strong> Komplexität verbergen und nur das Nötigste zeigen. Eine abstrakte Klasse ist eine Art Schablone, von der man kein direktes Objekt erstellen kann. Sie dient als gemeinsame Basis und kann ihre Unterklassen zwingen, bestimmte Methoden (abstrakte Methoden) selbst zu implementieren.</p>
+            <p><strong>Prüfungsrelevanz:</strong> Du musst wissen, dass man von einer abstrakten Klasse (im UML <i>kursiv</i>) kein Objekt erzeugen kann und wozu sie dient.</p>
+            <h6>IHK-Beispiel (W24/25):</h6>
+            <p>Die Klasse <i>`Messwert`</i> ist abstrakt. Man kann keinen "allgemeinen" Messwert erzeugen. Man kann nur konkrete Messwerte wie `Strom` oder `Spannung` erzeugen. Die abstrakte Methode <i>`pruefeWert()`</i> zwingt jede Unterklasse, eine eigene Prüflogik zu definieren.</p>
+            <pre><code><span class="code-comment"># Eine abstrakte Klasse hat oft Methoden, die einen Fehler werfen.</span>
+<span class="code-comment"># Das ist der Zwang für die Unterklassen, sie zu überschreiben.</span>
+class Messwert
+  def initialize(wert) @wert = wert end
+  
+  def pruefe_wert
+    raise NotImplementedError, "Jede Unterklasse muss 'pruefe_wert' selbst implementieren!"
+  end
+end
+
+class Strom < Messwert
+  <span class="code-comment"># Strom MUSS pruefe_wert implementieren, sonst gibt es einen Fehler.</span>
+  def pruefe_wert
+    @wert >= 0.05 && @wert <= 2.0
+  end
+end
+
+<span class="code-comment"># strom = Strom.new(1.5) # -> OK!</span>
+<span class="code-comment"># fehler = Messwert.new(10) # -> FEHLER! (Man kann keine abstrakte Klasse instanziieren)</span>
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-5">
       <h2 class="h5">Weiter lernen</h2>
-      <ul>
-        <li><a href="1_uml_modellierung.html">Klassendiagramm zur Planung ansehen</a></li>
-        <li><a href="3_implementierung.html">Prinzipien direkt im Code üben</a></li>
-        <li><a href="4_entwurfsmuster.html">Factory-Pattern als Anwendung der Prinzipien</a></li>
-        <li><a href="../3_Webentwicklung/3_web_konzepte_sicherheit.html">REST-Methoden für saubere Schnittstellen</a></li>
-      </ul>
+      <div class="list-group">
+        <a href="ruby_grundlagen.html" class="list-group-item list-group-item-action"><strong>Weiter zu den Ruby-Grundlagen</strong> <i class="bi bi-arrow-right-circle"></i><br>Lerne die Syntax, mit der du die Prinzipien direkt im Code übst.</a>
+        <a href="3_implementierung.html" class="list-group-item list-group-item-action"><strong>Weiter zur Implementierung</strong><br>Setze anschließend ein UML-Diagramm komplett in Ruby um.</a>
+        <a href="1_uml_modellierung.html" class="list-group-item list-group-item-action"><strong>Zurück zur UML-Modellierung</strong><br>Verstehe, wie diese Prinzipien im Diagramm dargestellt werden.</a>
+      </div>
     </section>
   </main>
 
-  
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
+  
